@@ -1,0 +1,27 @@
+@import "./variables";
+
+@for $i from 0 through $MAX{
+    .p-#{$i} {
+        padding: 0px + $i !important;
+    } 
+    .pl-#{$i} {
+        padding-left: 0px + $i !important;
+    }
+    .pr-#{$i} {
+        padding-right: 0px + $i !important;
+    }
+    .pt-#{$i} {
+        padding-top: 0px + $i !important;
+    }
+    .pb-#{$i} {
+        padding-bottom: 0px + $i !important;
+    }
+    .px-#{$i} {
+        padding-left: 0px + $i !important;
+        padding-right: 0px + $i !important;
+    }
+    .py-#{$i} {
+        padding-top: 0px + $i !important;
+        padding-bottom: 0px + $i !important;
+    }
+}
