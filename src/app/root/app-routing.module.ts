@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full'
+  },
+  {
+    path: 'Nav-Item-1',
+    loadChildren: () => import('../shortcuts-life/shortcuts-life.module').then(m => m.ShortcutsLifeModule)
   }
 ];
 

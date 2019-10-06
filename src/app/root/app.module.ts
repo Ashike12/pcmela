@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonMaterialModule } from "../common-module/common-material.module";
 import { AppRoutingModule } from './app-routing.module';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { ShortcutsLifeModule } from '../shortcuts-life/shortcuts-life.module';
 import { AppRootDefaultComponent } from './root-default/root-default.component';
 import { SidevavComponent } from './sidevav/sidevav.component';
 
@@ -17,6 +17,7 @@ import { SidevavComponent } from './sidevav/sidevav.component';
     BrowserAnimationsModule,
     CommonMaterialModule,
     AppRoutingModule,
+    ShortcutsLifeModule
   ],
   providers: [],
   bootstrap: [AppRootDefaultComponent]
