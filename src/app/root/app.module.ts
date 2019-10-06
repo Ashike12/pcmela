@@ -22,5 +22,3 @@ import { SidevavComponent } from './sidevav/sidevav.component';
   bootstrap: [AppRootDefaultComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule);
