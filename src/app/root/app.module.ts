@@ -6,18 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShortcutsLifeModule } from '../shortcuts-life/shortcuts-life.module';
 import { AppRootDefaultComponent } from './root-default/root-default.component';
 import { SidevavComponent } from './sidevav/sidevav.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ApiIntegrationsModule } from '../api-integrations/api-integrations.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppRootDefaultComponent,
     SidevavComponent,
+    PageNotFoundComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonMaterialModule,
     AppRoutingModule,
-    ShortcutsLifeModule
+    ShortcutsLifeModule,
+    ApiIntegrationsModule
   ],
   providers: [],
   bootstrap: [AppRootDefaultComponent]

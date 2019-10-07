@@ -10,7 +10,6 @@ export class ShortcutLifeDefaultComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    debugger;
   }
 
 }
