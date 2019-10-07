@@ -10,7 +10,7 @@ export class SidevavComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
 
-  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
+  fillerNav = ['home', 'shortcut-life', 'api-integrations'];
 
   fillerContent = Array.from({length: 50}, () =>
       `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
