@@ -1,1 +1,3 @@
-<p>home works!</p>
+<ng-select (change)="translate.use(selectedCity)" [items]="languages" bindLabel="name" placeholder="Select city"
+    [(ngModel)]="selectedCity">
+</ng-select>
