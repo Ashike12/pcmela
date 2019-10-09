@@ -9,6 +9,16 @@ import { SidevavComponent } from './sidevav/sidevav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ApiIntegrationsModule } from '../api-integrations/api-integrations.module';
 import { HomeComponent } from './home/home.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   declarations: [
@@ -19,11 +29,21 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     CommonMaterialModule,
     AppRoutingModule,
     ShortcutsLifeModule,
-    ApiIntegrationsModule
+    ApiIntegrationsModule,
+    NgSelectModule,
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppRootDefaultComponent]
