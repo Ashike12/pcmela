@@ -7,7 +7,6 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  languages = ['en', 'bn'];
 
   constructor(public translate: TranslateService) { }
 

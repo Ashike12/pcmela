@@ -13,7 +13,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -37,6 +38,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ApiIntegrationsModule,
     NgSelectModule,
     FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
