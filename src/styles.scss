@@ -5,16 +5,16 @@
 @import "./styles/padding.scss";
 
 .body {
-    background-color: #d3e6e3
+  background-color: #d3e6e3;
 }
 
 .container .mat-form-field-appearance-legacy .mat-form-field-underline {
-    display: none !important;
+  display: none !important;
 }
 
 .container .mat-form-field-infix {
-    border: solid 2px black;
-    padding: 6px;
-    margin-top: 13px;
-    border-radius: 10px;
+  border: solid 2px black;
+  padding: 6px;
+  margin-top: 13px;
+  border-radius: 10px;
 }
