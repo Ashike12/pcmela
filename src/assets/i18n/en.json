@@ -1,3 +1,7 @@
 {
-    "TITLE": "Responsive app"
+    "TITLE": "Your title",
+    "SHORTCUT_LIFE": {
+        "TEXT_TO_JSON_CONVERTER": "Text to JSON Converter",
+        "CONVERT_YOUR_TEXT_FILE": "Convert your text file to json just one click"
+    }
 }

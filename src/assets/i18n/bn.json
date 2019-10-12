@@ -1,3 +1,7 @@
 {
-    "TITLE": "কখগ জছচ ড"
+    "TITLE": "টাইটেল দাও",
+    "SHORTCUT_LIFE": {
+        "TEXT_TO_JSON_CONVERTER": "JSON রূপান্তরকারী পাঠ্য",
+        "CONVERT_YOUR_TEXT_FILE": "আপনার পাঠ্য ফাইলটি কেবলমাত্র একটি ক্লিককে JSON রূপান্তর করুন"
+    }
 }

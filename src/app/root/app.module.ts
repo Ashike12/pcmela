@@ -15,6 +15,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { SharedTranslateModule } from '../common-module/shared-translate.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -46,7 +47,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    SharedTranslateModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppRootDefaultComponent]
