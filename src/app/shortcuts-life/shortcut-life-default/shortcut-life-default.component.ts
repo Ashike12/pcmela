@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shortcut-life-default',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShortcutLifeDefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router:Router,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  }
+
+  routeToTextToJson(){
+    this.router.navigate(['text-to-json'],
+    {
+      relativeTo: this.activeRoute,
+      queryParamsHandling: "merge"
+    })
   }
 
 }

@@ -1,5 +1,7 @@
 {
     "TITLE": "Your title",
+    "SECOND_BRACKET_OPEN": "{",
+    "SECOND_BRACKET_CLOSE": "}",
     "SHORTCUT_LIFE": {
         "TEXT_TO_JSON_CONVERTER": "Text to JSON Converter",
         "CONVERT_YOUR_TEXT_FILE": "Convert your text file to json just one click"
