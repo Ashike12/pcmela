@@ -3,7 +3,7 @@
         <mat-card>
             <mat-card-content>
                 <h1>
-                    Welcome to text to Json converter
+                    {{'SHORTCUT_LIFE.TEXT_TO_JSON.WELCOME_TEXT_JSON_CONVERTER' | translate}}
                 </h1>
             </mat-card-content>
         </mat-card>
@@ -13,27 +13,27 @@
             <mat-card-content>
                 <div class="p-20">
                     <p>
-                        Before converting your text please read,
-                        <a class="cursor-pointer" (click)="srcollTo('condition')">how to use</a>
-                        this converter
+                        {{'SHORTCUT_LIFE.TEXT_TO_JSON.BEFORE_CONVERTING_YOUR_TEXT' | translate}}
+                        <a class="cursor-pointer" (click)="srcollTo('condition')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.HOW_TO_USE' | translate}}</a>
+                        {{'SHORTCUT_LIFE.TEXT_TO_JSON.THIS_CONVERTER' | translate}}
                     </p>
-                    <textarea class="p-20" placeholder="Enter your text here" [(ngModel)]="textInput">
+                    <textarea class="p-20" placeholder="{{'SHORTCUT_LIFE.TEXT_TO_JSON.ENTER_YOUR_TEXT_HERE' | translate}}" [(ngModel)]="textInput">
                     </textarea>
                 </div>
                 <div class="pl-20" fxLayout="row">
                     <mat-checkbox class="pt-4" fxFlex="50" [(ngModel)]="isDuplicateKeyAllowed">
-                        Allow duplicate keys
+                        {{'SHORTCUT_LIFE.TEXT_TO_JSON.ALLOW_DUPLICATE_KEYS' | translate}}
                     </mat-checkbox>
                     <div fxFlex="20">
                         <div fxFlex="50">
-                            <button mat-raised-button color="primary" (click)="convertToJson()">Convert Now</button>
+                            <button mat-raised-button color="primary" (click)="convertToJson()">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_NOW' | translate}}</button>
                         </div>
                     </div>
                 </div>
                 <div class="p-20">
-                    <p>Your Json here</p>
+                    <p>{{'SHORTCUT_LIFE.TEXT_TO_JSON.YOUR_JSON_HERE' | translate}}</p>
                     <textarea class="p-20" [(ngModel)]="jsonFile"
-                        placeholder="Click the Convert Now button to get Your json">
+                        placeholder="{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_THE_CONVERT_NOW' | translate}}">
 
                     </textarea>
                 </div>
@@ -42,27 +42,26 @@
         <mat-card>
             <mat-card-content>
                 <div class="p-20" id='condition'>
-                    <p>Before converting your text please read and fulfill the below condition</p>
+                    <p>{{'SHORTCUT_LIFE.TEXT_TO_JSON.BEFORE_CONVERTING_YOUR_TEXT_2' | translate}}</p>
                     <ul>
-                        <li>You can only convert text file to json, if you have any doc or docx file first convert it
-                            to text file.
-                             <a href="https://document.online-convert.com/convert-to-txt" target="blank">Click here</a>
-                             to convert your doc to text
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.YOU_CAN_ONLY_CONVERT' | translate}}
+                             <a href="https://document.online-convert.com/convert-to-txt" target="blank">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>
+                             {{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_YOUR_DOC_TEXT' | translate}}
                         </li>
-                        <li>4 words from a line will make a key</li>
-                        <li>words containing less than 3 characters will not considered as key words, hence small words won't appear in the key</li>
-                        <li>Unwanted and hidden characters are automatically removed such "%,#.." as key value of the json object</li>
-                        <li>Nested object can be built, to create nested object keep a "-" sign,</li>
-                        <li>Example of nested object, example text </li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.WORDS_FROM_LINE_WILL' | translate}}</li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.WORDS_CONTAINING_LESS_THAN' | translate}}</li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.UNWANTED_AND_HIDDEN_CHARACTERS' | translate}}</li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.NESTED_OBJECT_CAN_BUILT' | translate}}</li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.EXAMPLE_NESTED_OBJECT_EXAMPLE' | translate}} </li>
                         <li>Name of fruits in the busket</li>
                         <li>-Apple</li>
                         <li>-Bannana</li>
-                        <li>Object will be like below</li>
+                        <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.OBJECT_WILL_BE_LIKE_BELOW' | translate}}</li>
                         <li>"NAME_FRUITS_THE_BUSKET_LIST": {{'SECOND_BRACKET_OPEN' | translate}}</li>
                         <li>"APPLE": "Apple",</li>
                         <li>"BANNNAN": "Bannan"</li>
                         <li>{{'SECOND_BRACKET_CLOSE' | translate}}</li>
-                        <li><a class="cursor-pointer" (click)="srcollTo('top')">Click here</a> to go at top.</li>
+                        <li><a class="cursor-pointer" (click)="srcollTo('top')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>{{'SHORTCUT_LIFE.TEXT_TO_JSON.TO_GO_AT_TOP' | translate}}</li>
                     </ul>
             
                 </div>

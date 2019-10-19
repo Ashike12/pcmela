@@ -1,7 +1,36 @@
 {
     "TITLE": "টাইটেল দাও",
+    "FIRST_BRACKET_OPEN": "(",
+    "FIRST_BRACKET_CLOSE": ")",
+    "SECOND_BRACKET_OPEN": "{",
+    "SECOND_BRACKET_CLOSE": "}",
+    "THIRD_BRACKET_OPEN": "[",
+    "THIRD_BRACKET_CLOSE": "]",
     "SHORTCUT_LIFE": {
         "TEXT_TO_JSON_CONVERTER": "JSON রূপান্তরকারী পাঠ্য",
+        "TEXT_TO_JSON": {
+            "WELCOME_TEXT_JSON_CONVERTER": "JSon কনভার্টারে আপনাকে স্বাগতম",
+            "BEFORE_CONVERTING_YOUR_TEXT": "আপনার পাঠ্য রূপান্তর করার আগে দয়া করে এটি",
+            "HOW_TO_USE": "কিভাবে ব্যাবহার করতে হয় ",
+            "THIS_CONVERTER": "সেটি পড়ুন।",
+            "ENTER_YOUR_TEXT_HERE": "আপনার টেক্সটি প্রবেশ করান",
+            "ALLOW_DUPLICATE_KEYS": "Json ফাইল এর জন্যে কি ডুপ্লিকেট কি ব্যাবহার করবেন?",
+            "CONVERT_NOW": "ফাইল/টেক্সট কনভার্ট করুন",
+            "YOUR_JSON_HERE": "আপনার Json এখানে",
+            "CLICK_THE_CONVERT_NOW": "আপনার Json ফাইলটি পাওয়ার জন্যে \"ফাইল/টেক্সট কনভার্ট করুন\" বাটনটি ক্লিক করুন",
+            "BEFORE_CONVERTING_YOUR_TEXT_2": "ফাইল/টেক্সট কনভার্ট করার পূর্বে নিচের শর্ত গুলি পড়ুন এবং পুরন করুন।",
+            "YOU_CAN_ONLY_CONVERT": "You can only convert text file to json, if you have any doc or docx file first convert it to text file.",
+            "CLICK_HERE": "Click here",
+            "CONVERT_YOUR_DOC_TEXT": "to convert your doc to text",
+            "WORDS_FROM_LINE_WILL": "4 words from a line will make a key",
+            "WORDS_CONTAINING_LESS_THAN": "words containing less than 3 characters will not considered as key words, hence small words won't appear in the key",
+            "UNWANTED_AND_HIDDEN_CHARACTERS": "Unwanted and hidden characters are automatically removed such \"%,#..\" as key value of the json object",
+            "NESTED_OBJECT_CAN_BUILT": "Nested object can be built, to create nested object keep a \"-\" sign,",
+            "EXAMPLE_NESTED_OBJECT_EXAMPLE": "Example of nested object, example text ",
+            "NAME_FRUITS_THE_BUSKET": "Name of fruits in the busket",
+            "OBJECT_WILL_BE_LIKE_BELOW": "Object will be like below",
+            "TO_GO_AT_TOP": "to go at top."
+        },
         "CONVERT_YOUR_TEXT_FILE": "আপনার পাঠ্য ফাইলটি কেবলমাত্র একটি ক্লিককে JSON রূপান্তর করুন"
     }
 }
