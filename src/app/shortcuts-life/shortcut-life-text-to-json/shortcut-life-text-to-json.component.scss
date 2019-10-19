@@ -1,0 +1,25 @@
+.heading mat-card h1 {
+  text-align: center !important;
+}
+
+.content p,li {
+    font-size: 18px !important;
+}
+
+.content a {
+  color: blue;
+  text-decoration: none;
+}
+
+.content a:hover {
+  color: rgb(255, 0, 0);
+}
+
+.content textarea {
+    resize: none;
+    height: 300px;
+    width: 60%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 200;
+    overflow: scroll;
+}

@@ -6,6 +6,8 @@ import { ShortcutLifeDefaultComponent } from './shortcut-life-default/shortcut-l
 import { CommonMaterialModule } from '../common-module/common-material.module';
 import { ShortcutLifeTextToJsonComponent } from './shortcut-life-text-to-json/shortcut-life-text-to-json.component';
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
+import { FormsModule } from '@angular/forms';
+import { ShortcutLifeTextToJsonService } from '../service/shortcuts-life/shortcut-life-text-to-json.service';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { SharedTranslateModule } from '../common-module/shared-translate.module'
     CommonModule,
     CommonMaterialModule,
     ShortcutsLifeRoutingModule,
-    SharedTranslateModule
-  ]
+    SharedTranslateModule,
+    FormsModule
+  ],
+  providers: [ShortcutLifeTextToJsonService]
 })
 export class ShortcutsLifeModule { }

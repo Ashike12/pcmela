@@ -18,3 +18,14 @@
   margin-top: 13px;
   border-radius: 10px;
 }
+
+.text-to-json-card mat-card {
+  max-width: 300px;
+  line-height: 2em;
+  cursor: pointer;
+}
+
+
+.cursor-pointer{
+  cursor:  pointer !important;
+}
