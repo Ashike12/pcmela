@@ -11,7 +11,7 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   textInput: string = "";
   jsonFile: string = ""
   isDuplicateKeyAllowed: boolean = false;
-  isInputText:boolean = false;
+  isInputText: boolean = false;
 
   constructor(
     private shortcutLifeTextToJsonService: ShortcutLifeTextToJsonService,
@@ -21,8 +21,8 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleInputMethod(method:boolean, $event){
-    if(!method){
+  toggleInputMethod(method: boolean, $event) {
+    if (!method) {
       this.onClick($event)
     }
     this.isInputText = method;
@@ -30,6 +30,7 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
 
   convertToJson() {
     this.jsonFile = this.shortcutLifeTextToJsonService.convertTextToJson(this.textInput, this.isDuplicateKeyAllowed);
+
   }
 
   srcollTo(id) {
@@ -126,6 +127,13 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
       }
       //}
     }
+    let textFile = this.files[0];
+    let fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      let textData = JSON.parse(JSON.stringify(fileReader.result));
+      this.textInput = textData;
+    }
+    fileReader.readAsText(textFile);
   }
 
   removeFile(event, file) {
