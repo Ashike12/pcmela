@@ -25,7 +25,21 @@
   cursor: pointer;
 }
 
-
-.cursor-pointer{
-  cursor:  pointer !important;
+.cursor-pointer {
+  cursor: pointer !important;
 }
+
+.shortcut-life-text-to-json .input_fileupload--hidden {
+  display: none !important;
+}
+
+// .shortcut-life-text-to-json .upload-info {
+//   position: relative;
+// }
+
+// .shortcut-life-text-to-json .ng-star-inserted {
+//   z-index: 1;
+//   position: absolute;
+//   top: 25px;
+//   width: 100%;
+// }

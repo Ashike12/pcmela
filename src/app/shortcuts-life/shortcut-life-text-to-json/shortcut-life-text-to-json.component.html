@@ -14,10 +14,38 @@
                 <div class="p-20">
                     <p>
                         {{'SHORTCUT_LIFE.TEXT_TO_JSON.BEFORE_CONVERTING_YOUR_TEXT' | translate}}
-                        <a class="cursor-pointer" (click)="srcollTo('condition')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.HOW_TO_USE' | translate}}</a>
+                        <a class="cursor-pointer"
+                            (click)="srcollTo('condition')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.HOW_TO_USE' | translate}}</a>
                         {{'SHORTCUT_LIFE.TEXT_TO_JSON.THIS_CONVERTER' | translate}}
                     </p>
-                    <textarea class="p-20" placeholder="{{'SHORTCUT_LIFE.TEXT_TO_JSON.ENTER_YOUR_TEXT_HERE' | translate}}" [(ngModel)]="textInput">
+                    <div class="mb-20">
+                        <button (click)="toggleInputMethod(false, $event)" class="mr-20" mat-raised-button
+                            color="primary">
+                            <mat-icon class="pl-4">add</mat-icon>Upload File
+                        </button>
+                        <button (click)="toggleInputMethod(true)" mat-raised-button color="primary">Input
+                            Text</button>
+                    </div>
+                    <div class="upload-info">
+
+                        <div *ngIf="!isInputText">
+                            <input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
+                                (change)="onFileSelected($event)" [(ngModel)]="inputFileName" accept="text/plain">
+
+                            <div *ngFor="let f of files">
+                                <span>{{f.name}}</span>
+                                <button mat-icon-button color="primary"
+                                    [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+                                    (click)="removeFile(event,f)">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea class="p-20" *ngIf="isInputText"
+                        placeholder="{{'SHORTCUT_LIFE.TEXT_TO_JSON.ENTER_YOUR_TEXT_HERE' | translate}}"
+                        [(ngModel)]="textInput">
                     </textarea>
                 </div>
                 <div class="pl-20" fxLayout="row">
@@ -26,7 +54,8 @@
                     </mat-checkbox>
                     <div fxFlex="20">
                         <div fxFlex="50">
-                            <button mat-raised-button color="primary" (click)="convertToJson()">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_NOW' | translate}}</button>
+                            <button mat-raised-button color="primary"
+                                (click)="convertToJson()">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_NOW' | translate}}</button>
                         </div>
                     </div>
                 </div>
@@ -45,8 +74,9 @@
                     <p>{{'SHORTCUT_LIFE.TEXT_TO_JSON.BEFORE_CONVERTING_YOUR_TEXT_2' | translate}}</p>
                     <ul>
                         <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.YOU_CAN_ONLY_CONVERT' | translate}}
-                             <a href="https://document.online-convert.com/convert-to-txt" target="blank">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>
-                             {{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_YOUR_DOC_TEXT' | translate}}
+                            <a href="https://document.online-convert.com/convert-to-txt"
+                                target="blank">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>
+                            {{'SHORTCUT_LIFE.TEXT_TO_JSON.CONVERT_YOUR_DOC_TEXT' | translate}}
                         </li>
                         <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.WORDS_FROM_LINE_WILL' | translate}}</li>
                         <li>{{'SHORTCUT_LIFE.TEXT_TO_JSON.WORDS_CONTAINING_LESS_THAN' | translate}}</li>
@@ -61,9 +91,11 @@
                         <li>"APPLE": "Apple",</li>
                         <li>"BANNNAN": "Bannan"</li>
                         <li>{{'SECOND_BRACKET_CLOSE' | translate}}</li>
-                        <li><a class="cursor-pointer" (click)="srcollTo('top')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>{{'SHORTCUT_LIFE.TEXT_TO_JSON.TO_GO_AT_TOP' | translate}}</li>
+                        <li><a class="cursor-pointer"
+                                (click)="srcollTo('top')">{{'SHORTCUT_LIFE.TEXT_TO_JSON.CLICK_HERE' | translate}}</a>{{'SHORTCUT_LIFE.TEXT_TO_JSON.TO_GO_AT_TOP' | translate}}
+                        </li>
                     </ul>
-            
+
                 </div>
             </mat-card-content>
         </mat-card>
