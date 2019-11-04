@@ -8,10 +8,11 @@ import { ShortcutLifeTextToJsonComponent } from './shortcut-life-text-to-json/sh
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
 import { FormsModule } from '@angular/forms';
 import { ShortcutLifeTextToJsonService } from '../service/shortcuts-life/shortcut-life-text-to-json.service';
+import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-question/shortcut-life-upload-question.component';
 
 
 @NgModule({
-  declarations: [ShortcutLifeDefaultComponent, ShortcutLifeTextToJsonComponent],
+  declarations: [ShortcutLifeDefaultComponent, ShortcutLifeTextToJsonComponent, ShortcutLifeUploadQuestionComponent],
   imports: [
     CommonModule,
     CommonMaterialModule,

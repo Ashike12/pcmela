@@ -23,5 +23,12 @@ export class ShortcutLifeDefaultComponent implements OnInit {
       queryParamsHandling: "merge"
     })
   }
+  routeToUploadQwestion(){
+    this.router.navigate(['upload-questions'],
+    {
+      relativeTo: this.activeRoute,
+      queryParamsHandling: "merge"
+    })
+  }
 
 }
