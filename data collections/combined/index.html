@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="./lib/angular-material.min.css">
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="./lib/angular.js"></script>
+  <script src="./lib/angular-animate.min.js"></script>
+  <script src="./lib/angular-aria.min.js"></script>
+  <script src="./lib/angular-messages.min.js"></script>
+  <script src="./lib/angular-material.min.js"></script>
+  <script src="./lib/lodash.min.js"></script>
+
+  <script src="./app/app-config.js"></script>
+  <script src="./app/mongo-db.js"></script>
+  <script src="./app/main-app.js"></script>
+</head>
+
+<body ng-cloak style="padding:15px;">
+  <div ng-controller="MainController as vm">
+    <div class="ryans">
+      <h1>Ryans Data Collection Progress</h1>
+      <div class="centerd-button">
+        <md-button ng-click="vm.GetOrUpdateRyansProductLink()" class="md-primary md-raised" ng-disabled="vm.isRyansProductsLinks">Get/Update Products Links
+        </md-button>
+      </div>
+      <md-progress-linear md-mode="determinate" value={{vm.productsLinkProgressValueRyans}}></md-progress-linear>
+      <p class="ryans-progress-bar">{{vm.ryansInfo.currentlyTotalProcessedParent}}/{{vm.ryansInfo.totalParentLinks}}</p>
+      <div class="centerd-button">
+        <md-button ng-click="vm.GetOrUpdateRyansProductInfo()" class="md-primary md-raised" ng-disabled="vm.isRyansProductsInfo">Get/update products info</md-button>
+      </div>
+      <md-progress-linear md-mode="determinate" value={{vm.productsInfoProgressValueRyans}}></md-progress-linear>
+      <p class="ryans-progress-bar">{{vm.ryansInfo.totalProducts}}/{{vm.ryansInfo.totalProcessProducts}}</p>
+    </div>
+    <div class="startech">
+      <h1>StarTech Data Collection Progress</h1>
+      <div class="centerd-button">
+        <md-button class="md-primary md-raised" ng-disabled="false">Get/Update Products Links</md-button>
+      </div>
+      <md-progress-linear md-mode="determinate" value={{vm.productsLinkProgressValueRyans}}></md-progress-linear>
+      <p class="ryans-progress-bar">{{vm.ryansInfo.currentlyTotalProcessedParent}}/{{vm.ryansInfo.totalParentLinks}}</p>
+      <div class="centerd-button">
+        <md-button class="md-primary md-raised" ng-disabled="false">Get/Update Products Info</md-button>
+      </div>
+      <md-progress-linear md-mode="determinate" value={{vm.productsLinkProgressValueRyans}}></md-progress-linear>
+      <p class="ryans-progress-bar">{{vm.ryansInfo.currentlyTotalProcessedParent}}/{{vm.ryansInfo.totalParentLinks}}</p>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  // You can also require other files to run in this process
+  require('./renderer.js')
+
+</script>
+
+</html>

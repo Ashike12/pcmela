@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#data-collection
+
+/data collections/combined/node_modules
+/data collections/ryans/node_modules
+/data collections/startech/node_modules
