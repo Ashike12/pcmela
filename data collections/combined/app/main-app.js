@@ -108,19 +108,14 @@ var fs = require('fs');
                 allProductResultsRyans.productsData.push(response);
                 allProductResultsRyans.curIndex = curIndex;
                 if (curIndex < productsUrl.length - 1) {
-                    if (curIndex % 20 == 0) {
-                        saveProductsData();
-                        console.log(curIndex + " products are done and " + (productsUrl.length - curIndex) + " products are remaining");
-                    }
                     getAllDataFromRyans(productsUrl, curIndex+1);
-                } else {
-                    saveProductsData();
                 }
             });
         }
 
         function saveProductsData() {
             fs.writeFileSync('assets/data.json', JSON.stringify(allProductResultsRyans), 'utf-8');
+            console.log(allProductResultsRyans.productsData.length + "Produts are saved");
         }
 
         function AllProductListFromRyans() {
@@ -279,6 +274,7 @@ var fs = require('fs');
 
         vm.GetOrUpdateRyansProductLink = GetOrUpdateRyansProductLink;
         vm.GetOrUpdateRyansProductInfo = GetOrUpdateRyansProductInfo;
+        vm.saveProductsData = saveProductsData;
     }
 
     /**

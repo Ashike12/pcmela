@@ -148,17 +148,17 @@ var http = require('http');
             console.log(curIndex);
             GetProductInfoFromStartTech(productsLink[curIndex]).then(function (data) {
                 starTechProductsData.push(data);
-                if (curIndex < productsLink.length-1){
+                if (curIndex < productsLink.length - 1) {
                     allProductListFromStarTech(productsLink, curIndex + 1);
-                    if(curIndex % 50 == 0){
+                    if (curIndex % 50 == 0) {
                         saveProductsDataFromStarTech();
                     }
-                } else{
+                } else {
                     saveProductsDataFromStarTech()
                 }
             })
         }
-        function saveProductsDataFromStarTech(){
+        function saveProductsDataFromStarTech() {
             fs.writeFileSync('Data.json', JSON.stringify(starTechProductsData), 'utf-8');
         }
 
@@ -232,7 +232,7 @@ var http = require('http');
                 data;
                 var newLinks = FindDifferent(data, productParentLink);
                 PushNewLinks(newLinks);
-                if (curIndex < productParentLink.length-1) {
+                if (curIndex < productParentLink.length - 1) {
                     getProductsLinkOnly(productParentLink, curIndex + 1)
                     if (curIndex % 50 == 0)
                         saveStarTechLinksToFile();
@@ -265,7 +265,50 @@ var http = require('http');
 
         // GetAllProductNameFromStarTech(); //to prepare links
 
-        GetAllProductData(); // to get information about each product
+        // GetAllProductData(); // to get information about each product
+
+        var dataModel = {
+            "League": "",
+            "Date": "",
+            "Match": "",
+        }
+
+        function scoringResult() {
+            var url = 'http://www.scorebing.com/fixtures/20191031/p.3';
+            request.get(url, options, function (er, res, body) {
+                if (typeof (body) === 'string') {
+                    var parser = new DOMParser();
+                    var rootElement = parser.parseFromString(body, 'text/html');
+                    var tables = rootElement.querySelectorAll("table");
+                    var data = [];
+                    _.forEach(tables, function (table) {
+                        var tableRows = table.querySelectorAll("tr");
+                        var tableRowsLen = tableRows.length;
+                        for(let i=1;i<tableRowsLen;i++) {
+                            var tableCells = tableRows[i].querySelectorAll("th, td");
+                            var tableCellsLength = tableCells.length;
+                            dataModel.League = beautify(tableCells[0].innerText);
+                            dataModel.Date = beautify(tableCells[1].innerText);
+                            dataModel.Match = beautify(beautify(tableCells[2].querySelector("a").innerText) + " x " + beautify(tableCells[4].querySelector("a").innerText));
+                            dataModel["Handicap"] = beautify(_.split(tableCells[6].innerText,/\//)[0]);
+                            debugger;
+                        }
+                    })
+                }
+            })
+        }
+
+        function beautify(str){
+            var newStr = "";
+            // var wordArray = _.split(str, / /);
+            for(let i=0;i<str.length-1;i++){
+                if((str[i]!=' ' || str[i+1]!=' ') && str[i]!=="\n") newStr+=str[i];
+            }
+            newStr+=str[str.length-1];
+            return newStr;
+        }
+
+        scoringResult();
 
 
     }
