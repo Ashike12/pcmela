@@ -6,7 +6,7 @@ import { ShortcutLifeDefaultComponent } from './shortcut-life-default/shortcut-l
 import { CommonMaterialModule } from '../common-module/common-material.module';
 import { ShortcutLifeTextToJsonComponent } from './shortcut-life-text-to-json/shortcut-life-text-to-json.component';
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShortcutLifeTextToJsonService } from '../service/shortcuts-life/shortcut-life-text-to-json.service';
 import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-question/shortcut-life-upload-question.component';
 
@@ -18,7 +18,8 @@ import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-ques
     CommonMaterialModule,
     ShortcutsLifeRoutingModule,
     SharedTranslateModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ShortcutLifeTextToJsonService]
 })

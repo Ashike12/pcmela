@@ -1,5 +1,5 @@
 <div class="container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar  fxLayout="row wrap" color="primary" class="example-toolbar">
+  <mat-toolbar fxLayout="row wrap" color="primary" class="example-toolbar">
     <div fxFlex.gt-sm="92" fxFlex="80">
       <div fxLayout="row wrap">
         <button mat-icon-button (click)="snav.toggle()">
@@ -8,13 +8,15 @@
         <h1 class="example-app-name">{{ 'TITLE' | translate }}</h1>
       </div>
     </div>
-    <mat-form-field fxFlex.gt-sm="8" fxFlex="20">
-      <mat-select [(ngModel)]="selectedLang" (selectionChange)="translate.use(selectedLang)">
-        <mat-option *ngFor="let lang of languages" [value]="lang.Key">
-          {{lang.Language}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="language-option" fxFlex.gt-sm="8" fxFlex="20">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedLang" (selectionChange)="translate.use(selectedLang)">
+          <mat-option *ngFor="let lang of languages" [value]="lang.Key">
+            {{lang.Language}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -26,9 +28,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <div class="mt-10 ml-10">
+      <div class="mt-10 mx-10">
         <div class="mb-20">
-            <app-breadcrumb></app-breadcrumb>
+          <app-breadcrumb></app-breadcrumb>
         </div>
         <router-outlet></router-outlet>
       </div>

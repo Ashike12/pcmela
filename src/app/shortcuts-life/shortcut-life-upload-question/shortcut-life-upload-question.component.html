@@ -1,1 +1,45 @@
-<p>shortcut-life-upload-question works!</p>
+<div fxLayout="row" fxFlex="100" class="upload-question">
+    <div>
+        <!-- <button (click)="addQuestion()" mat-raised-button color="primary">
+            {{ 'SHORTCUT_LIFE.ADD_QUESTION_TO_DATABASE.ADD_QUESTION' | translate }}
+        </button> -->
+        <mat-card>
+            <mat-card-content>
+                <form fxLayout="column" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                    <h3>Question:</h3>
+                    <mat-form-field>
+                        <input matInput placeholder="Enter question here" formControlName="question">
+                        <mat-error *ngIf="f.question.errors">
+                            <div *ngIf="f.question.errors.required">This is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                    <h3>Options:</h3>
+                    <div formArrayName="options" fxLayout="row wrap">
+                        <div *ngFor="let option of options.controls; let i=index">
+                            <mat-form-field>
+                                <input matInput placeholder="Option {{i+1}}" [formControlName]="i">
+                                <mat-error *ngIf="f.options.controls[i].errors">
+                                    <div *ngIf="f.options.controls[i].errors.required">This is required</div>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Questions answer</mat-label>
+                        <mat-select formControlName="answer">
+                            <mat-option *ngFor="let opt of questionOptions" [value]="opt">
+                                {{opt}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f.answer.errors">
+                            <div *ngIf="f.answer.errors.required">This is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                    <div>
+                        <button [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit Question</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

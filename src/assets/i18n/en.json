@@ -8,6 +8,10 @@
     "THIRD_BRACKET_CLOSE": "]",
     "SHORTCUT_LIFE": {
         "ADD_QUESTION": "Add a Question to database",
+        "ADD_QUESTION_TO_DATABASE": {
+            "ADD_QUESTION": "Add question",
+            "ADD_ANOTHER_QUESTION":"Add another question"
+        },
         "TEXT_TO_JSON_CONVERTER": "Text to JSON Converter",
         "TEXT_TO_JSON": {
             "WELCOME_TEXT_JSON_CONVERTER": "Welcome to text to Json converter",
