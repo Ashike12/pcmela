@@ -7,6 +7,7 @@
     "THIRD_BRACKET_OPEN": "[",
     "THIRD_BRACKET_CLOSE": "]",
     "SHORTCUT_LIFE": {
+        "ADD_QUESTION": "Add a Question to database",
         "TEXT_TO_JSON_CONVERTER": "Text to JSON Converter",
         "TEXT_TO_JSON": {
             "WELCOME_TEXT_JSON_CONVERTER": "Welcome to text to Json converter",

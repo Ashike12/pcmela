@@ -1,26 +1,26 @@
 @import "./variables";
 
 @for $i from 0 through $MAX{
-    .m-#{$i} {
+    .m-#{$i*2} {
         margin: 0px + $i*2 !important;
     } 
-    .ml-#{$i} {
+    .ml-#{$i*2} {
         margin-left: 0px + $i*2 !important;
     }
-    .mr-#{$i} {
+    .mr-#{$i*2} {
         margin-right: 0px + $i*2 !important;
     }
-    .mt-#{$i} {
+    .mt-#{$i*2} {
         margin-top: 0px + $i*2 !important;
     }
-    .mb-#{$i} {
+    .mb-#{$i*2} {
         margin-bottom: 0px + $i*2 !important;
     }
-    .mx-#{$i} {
+    .mx-#{$i*2} {
         margin-left: 0px + $i*2 !important;
         margin-right: 0px + $i*2 !important;
     }
-    .my-#{$i} {
+    .my-#{$i*2} {
         margin-top: 0px + $i*2 !important;
         margin-bottom: 0px + $i*2 !important;
     }
