@@ -16,6 +16,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
+import {BreadcrumbModule} from 'primeng/primeng';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -28,6 +30,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SidevavComponent,
     PageNotFoundComponent,
     HomeComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    BreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

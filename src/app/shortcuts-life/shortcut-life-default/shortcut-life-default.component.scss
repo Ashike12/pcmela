@@ -1,3 +1,6 @@
+mat-card{
+  height: 399px !important;
+}
 .text-to-json-card mat-card .card-iamge {
   max-height: 200px !important;
 }
@@ -10,5 +13,10 @@
 
 .text-to-json-card-header-image {
   background-image: url("../../../assets/images/json-icon.png");
+  background-size: cover;
+}
+
+.text-to-json-card-header-question-image {
+  background-image: url("../../../assets/images/question-icon.jpg");
   background-size: cover;
 }

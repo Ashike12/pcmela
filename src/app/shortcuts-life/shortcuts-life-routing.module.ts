@@ -8,15 +8,31 @@ import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-ques
 const routes: Routes = [
   {
     path: '',
-    component: ShortcutLifeDefaultComponent
+    component: ShortcutLifeDefaultComponent,
+    data: {
+      breadcrumb: null,
+      translate: false,
+      translate_key: '',
+    }
+    
   },
   {
     path:'text-to-json',
-    component: ShortcutLifeTextToJsonComponent
+    component: ShortcutLifeTextToJsonComponent,
+    data: {
+      breadcrumb: 'text-to-json',
+      translate: true,
+      translate_key: 'text-to-json',
+    }
   },
   {
     path: 'upload-questions',
-    component: ShortcutLifeUploadQuestionComponent
+    component: ShortcutLifeUploadQuestionComponent,
+    data: {
+      breadcrumb: 'upload-questions',
+      translate: true,
+      translate_key: 'upload-questions',
+    }
   }
 ];
 

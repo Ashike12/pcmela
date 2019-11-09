@@ -14,7 +14,10 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: {
+      breadcrumb: null
+    }
   },
   {
     path: 'home',
@@ -22,7 +25,12 @@ const routes: Routes = [
   },
   {
     path: 'shortcut-life',
-    loadChildren: () => import('../shortcuts-life/shortcuts-life.module').then(m => m.ShortcutsLifeModule)
+    loadChildren: () => import('../shortcuts-life/shortcuts-life.module').then(m => m.ShortcutsLifeModule),
+    data: {
+      breadcrumb: 'shortcut-life',
+      translate: false,
+      translate_key: 'shortcut-life',
+    }
   },
   {
     path: 'api-integrations',
