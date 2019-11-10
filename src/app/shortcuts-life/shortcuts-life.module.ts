@@ -9,6 +9,7 @@ import { SharedTranslateModule } from '../common-module/shared-translate.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShortcutLifeTextToJsonService } from '../service/shortcuts-life/shortcut-life-text-to-json.service';
 import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-question/shortcut-life-upload-question.component';
+import { CommonService } from '../service/common/common.service';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-ques
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ShortcutLifeTextToJsonService]
+  providers: [ShortcutLifeTextToJsonService, CommonService]
 })
 export class ShortcutsLifeModule { }

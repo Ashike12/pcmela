@@ -6,7 +6,10 @@ import { ApiIntegrationsDefaultComponent } from './api-integrations-default/api-
 const routes: Routes = [
   {
     path: '',
-    component: ApiIntegrationsDefaultComponent
+    component: ApiIntegrationsDefaultComponent,
+    data: {
+      breadcrumb: null
+    }
   }
 ];
 

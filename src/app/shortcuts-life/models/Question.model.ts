@@ -1,5 +1,6 @@
 
 export class QuestionModel{
+    _id:string;
     question:string;
     option1: any;
     option2: any;
@@ -9,6 +10,7 @@ export class QuestionModel{
     answer:string;
 
     constructor(data?){
+        this._id = data && data._id ? data._id : null,
         this.question = data && data.question ? data.question : "",
         this.option1 = data && data.option1 ? data.option1 : null,
         this.option2 = data && data.option2 ? data.option2 : null,

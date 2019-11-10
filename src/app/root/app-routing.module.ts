@@ -21,7 +21,10 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data:{
+      breadcrumb: "Home"
+    }
   },
   {
     path: 'shortcut-life',
@@ -34,7 +37,10 @@ const routes: Routes = [
   },
   {
     path: 'api-integrations',
-    loadChildren: () => import('../api-integrations/api-integrations.module').then(m => m.ApiIntegrationsModule)
+    loadChildren: () => import('../api-integrations/api-integrations.module').then(m => m.ApiIntegrationsModule),
+    data: {
+      breadcrumb: "API-Integration"
+    }
   },
   {
     path: "**",

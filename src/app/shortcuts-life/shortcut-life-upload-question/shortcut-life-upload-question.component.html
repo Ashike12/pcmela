@@ -5,7 +5,7 @@
         </button> -->
         <mat-card>
             <mat-card-content>
-                <form fxLayout="column" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                <form fxLayout="column" [formGroup]="questionForm">
                     <h3>Question:</h3>
                     <mat-form-field>
                         <input matInput placeholder="Enter question here" formControlName="question">
@@ -35,8 +35,10 @@
                             <div *ngIf="f.answer.errors.required">This is required</div>
                         </mat-error>
                     </mat-form-field>
-                    <div>
-                        <button [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit Question</button>
+                    <div fxLayout="column" fxLayout.gt-sm="row wrap">
+                        <button class="mr-20" (click)="onSubmit()" *ngIf="!isQuestionSubmitted" [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit Question</button>
+                        <button class="mr-20" *ngIf="isQuestionSubmitted" [disabled]="!questionForm.valid" mat-raised-button color="primary">Update Question</button>
+                        <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary">Add another question</button>
                     </div>
                 </form>
             </mat-card-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { QuestionModel } from '../models/Question.model';
+import { CommonService } from '../../service/common/common.service';
 
 @Component({
   selector: 'app-shortcut-life-upload-question',
@@ -12,8 +13,9 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit {
   questionForm: FormGroup;
   questionData: QuestionModel = new QuestionModel();
   questionOptions = ["Options 1","Options 2","Options 3","Options 4","Options 5"];
+  isQuestionSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private commonService: CommonService) { }
 
   ngOnInit() {
     this.questionForm = this.createFormFields();
@@ -40,10 +42,19 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit {
   get f() { return this.questionForm.controls; }
 
   onSubmit(){
+    this.questionData._id = this.commonService.generateUUID();
     this.questionData.question = this.f.question.value;
     for(let i=0;i<5;i++){
       this.questionData["option"+(i+1)] = this.options.controls[i].value;
     }
+    this.questionData.answer = this.f.answer.value;
+    this.isQuestionSubmitted = true;
+  }
+  updateQuestion(){
+
+  }
+  addAnother(){
+    this.questionForm.reset;
   }
 
 }
