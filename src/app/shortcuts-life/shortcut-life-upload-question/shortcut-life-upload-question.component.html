@@ -1,30 +1,30 @@
 <div fxLayout="row" fxFlex="100" class="upload-question">
-    <div>
-        <!-- <button (click)="addQuestion()" mat-raised-button color="primary">
-            {{ 'SHORTCUT_LIFE.ADD_QUESTION_TO_DATABASE.ADD_QUESTION' | translate }}
-        </button> -->
-        <mat-card>
-            <mat-card-content>
-                <form fxLayout="column" [formGroup]="questionForm">
-                    <h3>Question:</h3>
-                    <mat-form-field>
+    <mat-card fxFlex="100">
+        <mat-card-content>
+            <form fxLayout="column" [formGroup]="questionForm">
+                <h3>Question:</h3>
+                <div fxLayout="row">
+                    <mat-form-field appearance="outline" fxFlex.gt-md="45" fxFlex="100">
                         <input matInput placeholder="Enter question here" formControlName="question">
                         <mat-error *ngIf="f.question.errors">
                             <div *ngIf="f.question.errors.required">This is required</div>
                         </mat-error>
                     </mat-form-field>
-                    <h3>Options:</h3>
-                    <div formArrayName="options" fxLayout="row wrap">
-                        <div *ngFor="let option of options.controls; let i=index">
-                            <mat-form-field>
-                                <input matInput placeholder="Option {{i+1}}" [formControlName]="i">
-                                <mat-error *ngIf="f.options.controls[i].errors">
-                                    <div *ngIf="f.options.controls[i].errors.required">This is required</div>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
+                </div>
+                <h3>Options:</h3>
+                <div formArrayName="options" fxLayout="row wrap">
+                    <div  fxFlex.gt-md="50" fxFlex="100" *ngFor="let option of options.controls; let i=index">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Option {{i+1}}</mat-label>
+                            <input matInput placeholder="Option {{i+1}}" [formControlName]="i">
+                            <mat-error *ngIf="f.options.controls[i].errors">
+                                <div *ngIf="f.options.controls[i].errors.required">This is required</div>
+                            </mat-error>
+                        </mat-form-field>
                     </div>
-                    <mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field appearance="outline" fxFlex.gt-md="45" fxFlex="100">
                         <mat-label>Questions answer</mat-label>
                         <mat-select formControlName="answer">
                             <mat-option *ngFor="let opt of questionOptions" [value]="opt">
@@ -35,13 +35,17 @@
                             <div *ngIf="f.answer.errors.required">This is required</div>
                         </mat-error>
                     </mat-form-field>
-                    <div fxLayout="column" fxLayout.gt-sm="row wrap">
-                        <button class="mr-20" (click)="onSubmit()" *ngIf="!isQuestionSubmitted" [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit Question</button>
-                        <button class="mr-20" *ngIf="isQuestionSubmitted" [disabled]="!questionForm.valid" mat-raised-button color="primary">Update Question</button>
-                        <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary">Add another question</button>
-                    </div>
-                </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row wrap">
+                    <button class="mr-20" (click)="onSubmit()" *ngIf="!isQuestionSubmitted"
+                        [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit
+                        Question</button>
+                    <button class="mr-20" *ngIf="isQuestionSubmitted" [disabled]="!questionForm.valid" mat-raised-button
+                        color="primary">Update Question</button>
+                    <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary">Add another
+                        question</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
 </div>
