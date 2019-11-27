@@ -108,7 +108,7 @@ var fs = require('fs');
                 allProductResultsRyans.productsData.push(response);
                 allProductResultsRyans.curIndex = curIndex;
                 if (curIndex < productsUrl.length - 1) {
-                    getAllDataFromRyans(productsUrl, curIndex+1);
+                    getAllDataFromRyans(productsUrl, curIndex + 1);
                 }
             });
         }
@@ -121,7 +121,7 @@ var fs = require('fs');
         function AllProductListFromRyans() {
             var productsUrl = getPreviousDataFromRyans('./assets/linksArray.json')["Links"];
             allProductResultsRyans = getPreviousDataFromRyans('./assets/data.json');
-            getAllDataFromRyans(productsUrl, allProductResultsRyans.curIndex===undefined ? 0 : allProductResultsRyans.curIndex+1);
+            getAllDataFromRyans(productsUrl, allProductResultsRyans.curIndex === undefined ? 0 : allProductResultsRyans.curIndex + 1);
             // if (currentProductsLength > productCount) {
             //     GetProductInfoFromRyans(productLists[productCount], currentProductsLength).then(function (response) {
             //         var productName = productLists[productCount]
@@ -221,7 +221,7 @@ var fs = require('fs');
                     if (curIndex % 20 == 0)
                         saveLinksToFileRyans(curIndex);
                 } else {
-                    saveLinksToFileRyans(curIndex-1);
+                    saveLinksToFileRyans(curIndex - 1);
                     vm.isRyansProductsInfo = false;
                 }
             });
@@ -242,7 +242,7 @@ var fs = require('fs');
                     var rootElement = parser.parseFromString(body, 'text/html');
                     var productNamesLink = GetLinksFromRyans(rootElement);
                     vm.ryansInfo.totalParentLinks = productNamesLink.length;
-                    vm.productsLinkProgressIncrementRatioRyans = (100.0 / (productNamesLink.length-1));
+                    vm.productsLinkProgressIncrementRatioRyans = (100.0 / (productNamesLink.length - 1));
                     vm.productsLinkProgressValueRyans = vm.productsLinkProgressIncrementRatioRyans * preveiousData.CurIndex;
                     _.forEach(preveiousData.Links, function (obj) {
                         ryansProductListsLink.push(obj.Link);
@@ -271,6 +271,43 @@ var fs = require('fs');
         var starTechProductListsLink = [];
         //#endregion
         // startech computer data collection ends
+
+        function prepareData() {
+            var json = JSON.parse(fs.readFileSync('./assets/data.json'));
+            var productsData = json.productsData;
+            // var keys = [];
+
+            // _.forEach(productsData, function(data){
+            //     _.forEach(data,function (value, key){
+            //         if(keys.indexOf(key) === -1){
+            //             keys.push(key);
+            //         }
+            //     });
+            // });
+            // console.log(keys);
+            _.forEach(productsData, function (data) {
+                data["_id"] = generateUUID();
+            });
+            fs.writeFileSync('assets/AddingIDs.json', JSON.stringify(productsData), 'utf-8');
+        }
+
+        function generateUUID() {
+            var d = new Date().getTime();//Timestamp
+            var d2 = (performance && performance.now && (performance.now() * 1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16;//random number between 0 and 16
+                if (d > 0) {//Use timestamp until depleted
+                    r = (d + r) % 16 | 0;
+                    d = Math.floor(d / 16);
+                } else {//Use microseconds since page-load if supported
+                    r = (d2 + r) % 16 | 0;
+                    d2 = Math.floor(d2 / 16);
+                }
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+        }
+
+        prepareData();
 
         vm.GetOrUpdateRyansProductLink = GetOrUpdateRyansProductLink;
         vm.GetOrUpdateRyansProductInfo = GetOrUpdateRyansProductInfo;
