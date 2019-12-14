@@ -5,6 +5,7 @@
                 <h3>Question:</h3>
                 <div fxLayout="row">
                     <mat-form-field appearance="outline" fxFlex.gt-md="45" fxFlex="100">
+                        <mat-label>Enter question here</mat-label>
                         <input matInput placeholder="Enter question here" formControlName="question">
                         <mat-error *ngIf="f.question.errors">
                             <div *ngIf="f.question.errors.required">This is required</div>
@@ -13,7 +14,7 @@
                 </div>
                 <h3>Options:</h3>
                 <div formArrayName="options" fxLayout="row wrap">
-                    <div  fxFlex.gt-md="50" fxFlex="100" *ngFor="let option of options.controls; let i=index">
+                    <div fxFlex.gt-md="50" fxFlex="100" *ngFor="let option of options.controls; let i=index">
                         <mat-form-field appearance="outline" fxFlex="90">
                             <mat-label>Option {{i+1}}</mat-label>
                             <input matInput placeholder="Option {{i+1}}" [formControlName]="i">
@@ -24,17 +25,74 @@
                     </div>
                 </div>
                 <div fxLayout="row">
-                    <mat-form-field appearance="outline" fxFlex.gt-md="45" fxFlex="100">
-                        <mat-label>Questions answer</mat-label>
-                        <mat-select formControlName="answer">
-                            <mat-option *ngFor="let opt of questionOptions" [value]="opt">
-                                {{opt}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="f.answer.errors">
-                            <div *ngIf="f.answer.errors.required">This is required</div>
-                        </mat-error>
-                    </mat-form-field>
+                    <div fxFlex.gt-md="50" fxFlex="100">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Questions answer</mat-label>
+                            <mat-select formControlName="answer">
+                                <mat-option *ngFor="let opt of questionOptions" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f.answer.errors">
+                                <div *ngIf="f.answer.errors.required">This is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex.gt-md="50" fxFlex="100">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Question Source</mat-label>
+                            <input matInput placeholder="Question Source" formControlName="questionSource">
+                            <!-- <mat-error *ngIf="f.questionSource.errors">
+                            <div *ngIf="f.questionSource.errors.required">This is required</div>
+                        </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex.gt-md="50" fxFlex="100">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Additional Source</mat-label>
+                            <input matInput placeholder="Question Source" formControlName="additionalSource">
+                            <!-- <mat-error *ngIf="f.questionSource.errors">
+                                    <div *ngIf="f.questionSource.errors.required">This is required</div>
+                                </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex.gt-md="50" fxFlex="100">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Select Class</mat-label>
+                            <mat-select formControlName="classes" multiple>
+                                <mat-option *ngFor="let key of objectKeys(classes)" [value]="classes[key]">
+                                    {{classes[key]}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f.classes.errors">
+                                <div *ngIf="f.classes.errors.required">This is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex.gt-md="50" fxFlex="100">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Select Category</mat-label>
+                            <mat-select formControlName="category" multiple>
+                                <mat-option *ngFor="let key of objectKeys(categories)" [value]="categories[key]">
+                                    {{categories[key]}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f.category.errors">
+                                <div *ngIf="f.category.errors.required">This is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="mt-8" fxFlex.gt-md="50" fxFlex="100">
+                        <div fxLayout="row">
+                        <p fxFlex="20">Set prioroty</p>
+                        <mat-slider fxFlex="60" formControlName="prioroty"></mat-slider>
+                        <p class="pl-20">{{f.prioroty.value}}</p>
+                        </div>
+                    </div>
                 </div>
                 <div fxLayout="column" fxLayout.gt-sm="row wrap">
                     <button class="mr-20" (click)="onSubmit()" *ngIf="!isQuestionSubmitted"

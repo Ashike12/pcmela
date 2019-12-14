@@ -1,6 +1,6 @@
 <div class="container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar fxLayout="row wrap" color="primary" class="example-toolbar">
-    <div fxFlex.gt-sm="92" fxFlex="80">
+    <div fxFlex.gt-sm="85" fxFlex="75">
       <div fxLayout="row wrap">
         <button mat-icon-button (click)="snav.toggle()">
           <mat-icon>menu</mat-icon>
@@ -8,7 +8,7 @@
         <h1 class="example-app-name">{{ 'TITLE' | translate }}</h1>
       </div>
     </div>
-    <div class="language-option" fxFlex.gt-sm="8" fxFlex="20">
+    <div class="language-option" fxFlex.gt-sm="10" fxFlex="20">
       <mat-form-field>
         <mat-select [(ngModel)]="selectedLang" (selectionChange)="translate.use(selectedLang)">
           <mat-option *ngFor="let lang of languages" [value]="lang.Key">

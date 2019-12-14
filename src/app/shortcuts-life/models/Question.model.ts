@@ -2,21 +2,23 @@
 export class QuestionModel{
     _id:string;
     question:string;
-    option1: any;
-    option2: any;
-    option3: any;
-    option4: any;
-    option5: any;
-    answer:string;
-
+    answer: string;
+    options: string[];
+    category: string[];
+    classes: string[];
+    prioroty: number;
+    questionSource: string;
+    additionalSource: string[];
+    
     constructor(data?){
         this._id = data && data._id ? data._id : null,
-        this.question = data && data.question ? data.question : "",
-        this.option1 = data && data.option1 ? data.option1 : null,
-        this.option2 = data && data.option2 ? data.option2 : null,
-        this.option3 = data && data.option3 ? data.option3 : null,
-        this.option4 = data && data.option4 ? data.option4 : null,
-        this.option5 = data && data.option5 ? data.option5 : null,
-        this.answer = data && data.answer ? data.answer : ""
+        this.prioroty = data && data.prioroty ? data.prioroty : null,
+        this.question = data && data.question ? data.question : null,
+        this.options = data && data.options ? data.options : [],
+        this.answer = data && data.answer ? data.answer : null,
+        this.category = data && data.category ? data.category : [],
+        this.classes = data && data.classes ? data.classes : [],
+        this.questionSource = data && data.questionSource ? data.questionSource: null
+        this.additionalSource = data && data.additionalSource ? data.additionalSource: []
     }
 }
