@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShortcutLifeTextToJsonService } from '../service/shortcuts-life/shortcut-life-text-to-json.service';
 import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-question/shortcut-life-upload-question.component';
 import { CommonService } from '../service/common/common.service';
+import { ShortcutLifeService } from '../service/shortcuts-life/shortcut-life.service';
 
 
 @NgModule({
@@ -22,6 +23,6 @@ import { CommonService } from '../service/common/common.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ShortcutLifeTextToJsonService, CommonService]
+  providers: [ShortcutLifeTextToJsonService, CommonService, ShortcutLifeService]
 })
 export class ShortcutsLifeModule { }

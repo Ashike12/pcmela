@@ -29,7 +29,7 @@
                         <mat-form-field appearance="outline" fxFlex="90">
                             <mat-label>Questions answer</mat-label>
                             <mat-select formControlName="answer">
-                                <mat-option *ngFor="let opt of questionOptions" [value]="opt">
+                                <mat-option *ngFor="let opt of questionOptions; let i=index;" [value]="i">
                                     {{opt}}
                                 </mat-option>
                             </mat-select>
@@ -99,7 +99,7 @@
                         [disabled]="!questionForm.valid" type="submit" mat-raised-button color="primary">Submit
                         Question</button>
                     <button class="mr-20" *ngIf="isQuestionSubmitted" [disabled]="!questionForm.valid" mat-raised-button
-                        color="primary">Update Question</button>
+                        color="primary" (click)="onSubmit()">Update Question</button>
                     <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary">Add another
                         question</button>
                 </div>
