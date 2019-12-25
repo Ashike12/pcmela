@@ -1,24 +1,36 @@
+export class TranslationOptionModel {
+    TranslationKey: string;
+    DefaultValue: string;
+
+    constructor(data?){
+        this.TranslationKey = data && data.TranslationKey ? data.TranslationKey : null,
+        this.DefaultValue = data && data.DefaultValue ? data.DefaultValue : null
+    }
+}
+
 
 export class QuestionModel{
     _id:string;
-    question:string;
-    answer: string;
-    options: string[];
-    category: string[];
-    classes: string[];
-    prioroty: number;
-    questionSource: string;
-    additionalSource: string[];
+    Question:TranslationOptionModel;
+    Answer: string;
+    Options: TranslationOptionModel[];
+    Category: string[];
+    Classes: string[];
+    Prioroty: number;
+    QuestionSource: string;
+    AdditionalSource: string[];
+    Description: string;
     
     constructor(data?){
         this._id = data && data._id ? data._id : null,
-        this.prioroty = data && data.prioroty ? data.prioroty : null,
-        this.question = data && data.question ? data.question : null,
-        this.options = data && data.options ? data.options : [],
-        this.answer = data && data.answer ? data.answer : null,
-        this.category = data && data.category ? data.category : [],
-        this.classes = data && data.classes ? data.classes : [],
-        this.questionSource = data && data.questionSource ? data.questionSource: null
-        this.additionalSource = data && data.additionalSource ? data.additionalSource: []
+        this.Prioroty = data && data.Prioroty ? data.Prioroty : null,
+        this.Question = new TranslationOptionModel(data && data.Question),
+        this.Options = data && data.Options ? data.Options : [],
+        this.Answer = data && data.Answer ? data.Answer : null,
+        this.Category = data && data.Category ? data.Category : [],
+        this.Classes = data && data.Classes ? data.Classes : [],
+        this.QuestionSource = data && data.QuestionSource ? data.QuestionSource: null,
+        this.AdditionalSource = data && data.AdditionalSource ? data.AdditionalSource: [],
+        this.Description = data && data.Description ? data.Description: null
     }
 }

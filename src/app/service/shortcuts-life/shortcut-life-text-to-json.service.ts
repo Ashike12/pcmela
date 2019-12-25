@@ -36,7 +36,7 @@ export class ShortcutLifeTextToJsonService {
     return key;
   }
 
-  convertTextToJson(textData, isDuplicateKeyAllowed) {
+  convertTextToJson(textData:any, isDuplicateKeyAllowed:boolean, isRequestedKeyOnly?:boolean) {
     if (!textData) {
       return;
     }
@@ -87,6 +87,10 @@ export class ShortcutLifeTextToJsonService {
         keyValyList.push(line);
         map[Key] = "";
       }
+    }
+
+    if(isRequestedKeyOnly){
+      return keyList[0];
     }
 
     //creating new object //
