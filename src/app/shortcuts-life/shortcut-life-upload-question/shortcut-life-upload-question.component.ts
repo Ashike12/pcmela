@@ -8,6 +8,7 @@ import { ShortcutLifeTextToJsonService } from '../../service/shortcuts-life/shor
 import { ShortcutLifeService } from '../../service/shortcuts-life/shortcut-life.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shortcut-life-upload-question',
@@ -20,6 +21,7 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
   questionForm: FormGroup;
   questionData: QuestionModel = new QuestionModel();
   questionOptions = ["Options 1", "Options 2", "Options 3", "Options 4", "Options 5"];
+  language: string;
   isQuestionSubmitted: boolean = false;
   classes = DefaultConstant.Class;
   categories = DefaultConstant.Category;
@@ -28,15 +30,28 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private commonService: CommonService,
     private shortcutLifeTextToJsonService: ShortcutLifeTextToJsonService,
-    private shortcutLifeService: ShortcutLifeService
+    private shortcutLifeService: ShortcutLifeService,
+    private translate: TranslateService
   ) {
     this._unsubscribeAll = new Subject();
-   }
+  }
 
   ngOnInit() {
     this.questionForm = this.createFormFields();
     this.addOptions(5);
     this.categories;
+    this.translate.onLangChange.pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data: any) => {
+        if (data && data.lang) {
+          if (data.lang == 'bn') {
+            this.language = 'Bengali'
+          } else{
+              this.language = 'English'
+          }
+        } else{
+          this.language = 'English'
+        }
+      })
   }
 
   createFormFields() {
@@ -82,24 +97,25 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
     this.questionData.Classes = this.f.classes.value;
     this.questionData.Category = this.f.category.value;
     this.questionData.Prioroty = this.f.prioroty.value;
+    this.questionData.Language = this.language;
     // this.questionData
-    if(!this.isQuestionSubmitted){
+    if (!this.isQuestionSubmitted) {
       this.shortcutLifeService.insertQuestionData(this.questionData).pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((res)=>{
-        this.isQuestionSubmitted = true;
-      });
-    } else{
+        .subscribe((res) => {
+          this.isQuestionSubmitted = true;
+        });
+    } else {
       this.shortcutLifeService.updateQuestionData(this.questionData).pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((res)=>{
-        res;
-      });
+        .subscribe((res) => {
+          res;
+        });
     }
   }
   addAnother() {
-    this.questionForm.reset;
+    this.questionForm.reset();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }

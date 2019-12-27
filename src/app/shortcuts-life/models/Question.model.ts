@@ -20,6 +20,7 @@ export class QuestionModel{
     QuestionSource: string;
     AdditionalSource: string[];
     Description: string;
+    Language: string
     
     constructor(data?){
         this._id = data && data._id ? data._id : null,
@@ -31,6 +32,7 @@ export class QuestionModel{
         this.Classes = data && data.Classes ? data.Classes : [],
         this.QuestionSource = data && data.QuestionSource ? data.QuestionSource: null,
         this.AdditionalSource = data && data.AdditionalSource ? data.AdditionalSource: [],
-        this.Description = data && data.Description ? data.Description: null
+        this.Description = data && data.Description ? data.Description: null,
+        this.Language = data && data.Language ? data.Language : null
     }
 }

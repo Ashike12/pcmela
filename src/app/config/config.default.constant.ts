@@ -23,6 +23,7 @@ export class DefaultConstant
         GK:"GK",
         INTERNATIONAL: "International",
         MATH: "Mathmetics",
-        MENTAL_ABILITY: "Mental Ability"
+        MENTAL_ABILITY: "Mental Ability",
+        COMPUTER: "Computer/Ict"
     }
 }

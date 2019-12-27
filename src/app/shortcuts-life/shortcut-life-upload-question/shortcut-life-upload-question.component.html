@@ -100,7 +100,7 @@
                         Question</button>
                     <button class="mr-20" *ngIf="isQuestionSubmitted" [disabled]="!questionForm.valid" mat-raised-button
                         color="primary" (click)="onSubmit()">Update Question</button>
-                    <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary">Add another
+                    <button *ngIf="isQuestionSubmitted" mat-raised-button color="primary" (click)="addAnother()">Add another
                         question</button>
                 </div>
             </form>
