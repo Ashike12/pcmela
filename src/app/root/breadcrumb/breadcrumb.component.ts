@@ -20,7 +20,10 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => this.menuItems = this.createBreadcrumbs(this.activatedRoute.root));
+      .subscribe(() => {
+        this.menuItems = this.createBreadcrumbs(this.activatedRoute.root);
+        this.menuItems[this.menuItems.length-1].disabled = true;
+      });
   }
 
   private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): MenuItem[] {

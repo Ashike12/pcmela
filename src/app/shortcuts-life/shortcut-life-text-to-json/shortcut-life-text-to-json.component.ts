@@ -12,6 +12,7 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   jsonFile: string = ""
   isDuplicateKeyAllowed: boolean = false;
   isInputText: boolean = false;
+  deleteButtonLabel: string;
 
   constructor(
     private shortcutLifeTextToJsonService: ShortcutLifeTextToJsonService,
@@ -21,7 +22,7 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleInputMethod(method: boolean, $event) {
+  toggleInputMethod(method: boolean, $event?) {
     if (!method) {
       this.onClick($event)
     }
@@ -30,7 +31,6 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
 
   convertToJson() {
     this.jsonFile = this.shortcutLifeTextToJsonService.convertTextToJson(this.textInput, this.isDuplicateKeyAllowed);
-
   }
 
   srcollTo(id) {

@@ -18,8 +18,8 @@
                         <mat-form-field appearance="outline" fxFlex="90">
                             <mat-label>Option {{i+1}}</mat-label>
                             <input matInput placeholder="Option {{i+1}}" [formControlName]="i">
-                            <mat-error *ngIf="f.options.controls[i].errors">
-                                <div *ngIf="f.options.controls[i].errors.required">This is required</div>
+                            <mat-error *ngIf="options.controls[i].errors">
+                                <div *ngIf="options.controls[i].errors.required">This is required</div>
                             </mat-error>
                         </mat-form-field>
                     </div>
