@@ -17,7 +17,7 @@ export class ApiIntegrationsDefaultComponent implements OnInit {
   }
 
   routeToGoogleMap(){
-    this.router.navigate(['goole-map-api'],
+    this.router.navigate(['google-map-api'],
     {
       relativeTo: this.activeRoute,
       queryParamsHandling: "merge"
