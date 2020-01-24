@@ -1,1 +1,21 @@
-<p>api-integrations-default works!</p>
+<div class="api-integration">
+    <div>
+        <mat-card (click)="routeToGoogleMap()">
+            <mat-card-header>
+                <div mat-card-avatar class="google-map-card-header-image"></div>
+                <mat-card-title>{{ 'SHORTCUT_LIFE.TEXT_TO_JSON_CONVERTER' | translate}}</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <img class="mt-10 card-iamge" mat-card-image src="../../../assets/images/google-map.jpg"
+                alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    {{'SHORTCUT_LIFE.CONVERT_YOUR_TEXT_FILE' | translate}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

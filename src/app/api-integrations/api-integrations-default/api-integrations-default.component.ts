@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-api-integrations-default',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiIntegrationsDefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router:Router,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  }
+
+  routeToGoogleMap(){
+    this.router.navigate(['goole-map-api'],
+    {
+      relativeTo: this.activeRoute,
+      queryParamsHandling: "merge"
+    })
   }
 
 }
