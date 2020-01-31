@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ShortcutLifeDefaultComponent } from './shortcut-life-default/shortcut-life-default.component';
-import { ShortcutLifeTextToJsonComponent } from './shortcut-life-text-to-json/shortcut-life-text-to-json.component';
-import { ShortcutLifeUploadQuestionComponent } from './shortcut-life-upload-question/shortcut-life-upload-question.component';
+import { ShortcutLifeDefaultComponent } from './components/shortcut-life-default/shortcut-life-default.component';
+import { ShortcutLifeTextToJsonComponent } from './components/shortcut-life-text-to-json/shortcut-life-text-to-json.component';
+import { ShortcutLifeUploadQuestionComponent } from './components/shortcut-life-upload-question/shortcut-life-upload-question.component';
 
 
 const routes: Routes = [

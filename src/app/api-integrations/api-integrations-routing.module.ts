@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ApiIntegrationsDefaultComponent } from './api-integrations-default/api-integrations-default.component';
-import { GoogleMapApiComponent } from './google-map-api/google-map-api.component';
+import { ApiIntegrationsDefaultComponent } from './components/api-integrations-default/api-integrations-default.component';
+import { GoogleMapApiComponent } from './components/google-map-api/google-map-api.component';
 
 
 const routes: Routes = [
