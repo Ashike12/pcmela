@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { QuestionModel, TranslationOptionModel } from '../models/Question.model';
-import { CommonService } from '../../service/common/common.service';
-import { DefaultConstant } from '../../config/config.default.constant';
+import { QuestionModel, TranslationOptionModel } from '../../models/Question.model';
+import { CommonService } from '../../../service/common/common.service';
+import { DefaultConstant } from '../../../config/config.default.constant';
 import { split as _split, replace as _replace } from 'lodash'
-import { ShortcutLifeTextToJsonService } from '../../service/shortcuts-life/shortcut-life-text-to-json.service';
-import { ShortcutLifeService } from '../../service/shortcuts-life/shortcut-life.service';
+import { ShortcutLifeTextToJsonService } from '../../../service/shortcuts-life/shortcut-life-text-to-json.service';
+import { ShortcutLifeService } from '../../../service/shortcuts-life/shortcut-life.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';

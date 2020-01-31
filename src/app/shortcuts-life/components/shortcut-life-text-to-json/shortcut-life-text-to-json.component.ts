@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { ShortcutLifeTextToJsonService } from 'src/app/service/shortcuts-life/shortcut-life-text-to-json.service';
+import { ShortcutLifeTextToJsonService } from '../../../service/shortcuts-life/shortcut-life-text-to-json.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
