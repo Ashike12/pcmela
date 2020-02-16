@@ -1,0 +1,15 @@
+<div class="problem-list">
+    <div *ngFor="let problem of problemList">
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{problem.title}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p class="m-0 p-0">{{problem.description}}</p>
+                <button class="mt-20" mat-raised-button color="primary" (click)="goToProblemDetails(problem.id)">See problem</button>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

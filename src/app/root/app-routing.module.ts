@@ -43,6 +43,15 @@ const routes: Routes = [
     }
   },
   {
+    path: 'arn-oj',
+    loadChildren: () => import('../arn-oj/arn-oj.module').then(m => m.ArnOjModule),
+    data: {
+      breadcrumb: "ARNOJ",
+      translate: false,
+      translate_key: 'ARNOJ'
+    }
+  },
+  {
     path: "**",
     component: PageNotFoundComponent
   }

@@ -291,7 +291,6 @@ var http = require('http');
                             dataModel.Date = beautify(tableCells[1].innerText);
                             dataModel.Match = beautify(beautify(tableCells[2].querySelector("a").innerText) + " x " + beautify(tableCells[4].querySelector("a").innerText));
                             dataModel["Handicap"] = beautify(_.split(tableCells[6].innerText,/\//)[0]);
-                            debugger;
                         }
                     })
                 }

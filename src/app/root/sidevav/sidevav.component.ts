@@ -22,7 +22,7 @@ export class SidevavComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
 
-  fillerNav = ['home', 'shortcut-life', 'api-integrations'];
+  fillerNav = ['home', 'shortcut-life', 'api-integrations', 'arn-oj'];
 
   private _mobileQueryListener: () => void;
 
