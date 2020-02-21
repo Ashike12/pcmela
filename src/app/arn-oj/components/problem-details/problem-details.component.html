@@ -20,4 +20,5 @@
             <p *ngFor="let line of problem.example_output">{{line}}</p>
         </div>
     </div>
+    <button class="mt-20" mat-raised-button color="primary" (click)="openSubmitModal(problem.id)">Submit Solution</button>
 </div>

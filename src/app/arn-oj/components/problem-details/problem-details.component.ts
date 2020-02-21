@@ -3,6 +3,8 @@ import { IProblem, Problem } from '../../models/problem.model';
 import { ActivatedRoute } from '@angular/router';
 import { ArnOjService } from '../../service/arn-oj.service';
 import { first } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SubmitProblemModalComponent } from '../submit-problem-modal/submit-problem-modal.component';
 
 @Component({
   selector: 'app-problem-details',
@@ -14,7 +16,8 @@ export class ProblemDetailsComponent implements OnInit {
   public isProblemLoaded = false;
   constructor(
     private activeRoute: ActivatedRoute,
-    private arnOjService: ArnOjService
+    private arnOjService: ArnOjService,
+    public matDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -27,5 +30,15 @@ export class ProblemDetailsComponent implements OnInit {
       this.problem = data;
       this.isProblemLoaded = true;
     })
+  }
+  openSubmitModal(probId: string){
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(SubmitProblemModalComponent, dialogConfig);
   }
 }

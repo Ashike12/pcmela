@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedTranslateModule,
     HttpClientModule,
     ArnOjRoutingModule
-  ]
+  ],
+  entryComponents: [SubmitProblemModalComponent]
 })
 export class ArnOjModule { }
