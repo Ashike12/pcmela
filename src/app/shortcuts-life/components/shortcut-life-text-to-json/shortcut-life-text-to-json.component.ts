@@ -8,10 +8,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./shortcut-life-text-to-json.component.scss']
 })
 export class ShortcutLifeTextToJsonComponent implements OnInit {
-  textInput: string = "";
-  jsonFile: string = ""
-  isDuplicateKeyAllowed: boolean = false;
-  isInputText: boolean = false;
+  textInput = '';
+  jsonFile = '';
+  isDuplicateKeyAllowed = false;
+  isInputText = false;
   deleteButtonLabel: string;
 
   constructor(
@@ -24,7 +24,7 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
 
   toggleInputMethod(method: boolean, $event?) {
     if (!method) {
-      this.onClick($event)
+      this.onClick();
     }
     this.isInputText = method;
   }
@@ -34,74 +34,103 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   }
 
   srcollTo(id) {
-    let ele = document.getElementById(id);
+    const ele = document.getElementById(id);
     ele.scrollIntoView();
   }
 
   // file upload from stackblitz https://stackblitz.com/edit/angular-material-fileupload
 
+  // tslint:disable-next-line:member-ordering
+  // tslint:disable-next-line:member-ordering
   @Input()
-  mode
+  mode;
+  // tslint:disable-next-line:member-ordering
+  // tslint:disable-next-line:member-ordering
   @Input()
-  names
+  names;
+  // tslint:disable-next-line:member-ordering
+  // tslint:disable-next-line:member-ordering
   @Input()
-  url
+  url;
+  // tslint:disable-next-line:member-ordering
+  // tslint:disable-next-line:member-ordering
   @Input()
-  method
+  method;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  multiple
+  multiple;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  disabled
+  disabled;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  accept
+  accept;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  maxFileSize
+  maxFileSize;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  auto = true
+  auto = true;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  withCredentials
+  withCredentials;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  invalidFileSizeMessageSummary
+  invalidFileSizeMessageSummary;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  invalidFileSizeMessageDetail
+  invalidFileSizeMessageDetail;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  invalidFileTypeMessageSummary
+  invalidFileTypeMessageSummary;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  invalidFileTypeMessageDetail
+  invalidFileTypeMessageDetail;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  previewWidth
+  previewWidth;
+  // tslint:disable-next-line:member-ordering
   @Input()
+  // tslint:disable-next-line:member-ordering
   @Input()
-  customUpload
+  customUpload;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  showUploadButton
+  showUploadButton;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  showCancelButton
+  showCancelButton;
 
 
+  // tslint:disable-next-line:member-ordering
   @Input()
-  dataUriPrefix
+  dataUriPrefix;
+  // tslint:disable-next-line:member-ordering
   @Input()
-  showUploadInfo
+  showUploadInfo;
 
   /**
    *
    */
 
 
+  // tslint:disable-next-line:member-ordering
   @ViewChild('fileUpload', {
     static: false
   })
-  fileUpload: ElementRef
+  fileUpload: ElementRef;
 
-  inputFileName: string
+  // tslint:disable-next-line:member-ordering
+  inputFileName: string;
 
+  // tslint:disable-next-line:member-ordering
   @Input()
-  files: File[] = []
+  files: File[] = [];
 
-  onClick(event) {
-    if (this.fileUpload)
-      this.fileUpload.nativeElement.click()
+  onClick() {
+    if (this.fileUpload) {
+      this.fileUpload.nativeElement.click();
+    }
   }
 
   onInput(event) {
@@ -109,38 +138,40 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    let files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-    console.log('event::::::', event)
+    const files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    console.log('event::::::', event);
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < files.length; i++) {
-      let file = files[i];
+      const file = files[i];
 
-      //if(!this.isFileSelected(file)){
+      // if(!this.isFileSelected(file)){
       if (this.validate(file)) {
         //      if(this.isImage(file)) {
         file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
         //      }
         if (!this.isMultiple()) {
-          this.files = []
+          this.files = [];
         }
         this.files.push(files[i]);
         //  }
       }
-      //}
+      // }
     }
-    let textFile = this.files[0];
-    let fileReader = new FileReader();
+    const textFile = this.files[0];
+    const fileReader = new FileReader();
     fileReader.onload = (e) => {
-      let textData = JSON.parse(JSON.stringify(fileReader.result));
+      const textData = JSON.parse(JSON.stringify(fileReader.result));
       this.textInput = textData;
-    }
+    };
     fileReader.readAsText(textFile);
   }
 
   removeFile(event, file) {
-    let ix
+    let ix;
+    // tslint:disable-next-line:no-conditional-assignment
     if (this.files && -1 !== (ix = this.files.indexOf(file))) {
-      this.files.splice(ix, 1)
-      this.clearInputElement()
+      this.files.splice(ix, 1);
+      this.clearInputElement();
     }
   }
 
@@ -151,19 +182,19 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
         && f.size === f.size
         && f.type === f.type
       ) {
-        return false
+        return false;
       }
     }
-    return true
+    return true;
   }
 
   clearInputElement() {
-    this.fileUpload.nativeElement.value = ''
+    this.fileUpload.nativeElement.value = '';
   }
 
 
   isMultiple(): boolean {
-    return this.multiple
+    return this.multiple;
   }
 
 }

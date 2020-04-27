@@ -31,6 +31,6 @@ export class SharedTranslateModule {
     return {
       ngModule: SharedTranslateModule,
       providers: []
-    }
+    };
   }
 }

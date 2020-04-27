@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { QuestionModel, TranslationOptionModel } from '../../models/Question.model';
 import { CommonService } from '../../../service/common/common.service';
 import { DefaultConstant } from '../../../config/config.default.constant';
-import { split as _split, replace as _replace } from 'lodash'
+import { split as _split, replace as _replace } from 'lodash';
 import { ShortcutLifeTextToJsonService } from '../../../service/shortcuts-life/shortcut-life-text-to-json.service';
 import { ShortcutLifeService } from '../../../service/shortcuts-life/shortcut-life.service';
 import { takeUntil } from 'rxjs/operators';
@@ -20,11 +20,12 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
   objectKeys = Object.keys;
   questionForm: FormGroup;
   questionData: QuestionModel = new QuestionModel();
-  questionOptions = ["Options 1", "Options 2", "Options 3", "Options 4", "Options 5"];
+  questionOptions = ['Options 1', 'Options 2', 'Options 3', 'Options 4', 'Options 5'];
   language: string;
-  isQuestionSubmitted: boolean = false;
+  isQuestionSubmitted = false;
   classes = DefaultConstant.Class;
   categories = DefaultConstant.Category;
+  // tslint:disable-next-line:variable-name
   private _unsubscribeAll: Subject<any>;
   constructor(
     private fb: FormBuilder,
@@ -39,19 +40,18 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.questionForm = this.createFormFields();
     this.addOptions(5);
-    this.categories;
     this.translate.onLangChange.pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data: any) => {
         if (data && data.lang) {
-          if (data.lang == 'bn') {
-            this.language = 'Bengali'
-          } else{
-              this.language = 'English'
+          if (data.lang === 'bn') {
+            this.language = 'Bengali';
+          } else {
+            this.language = 'English';
           }
-        } else{
-          this.language = 'English'
+        } else {
+          this.language = 'English';
         }
-      })
+      });
   }
 
   createFormFields() {
@@ -69,7 +69,7 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
   }
 
   addOptions(numberOfOptions: number = 1) {
-    for (let i = 1; i <= numberOfOptions; i++) this.options.push(this.fb.control('', i != 5 ? Validators.required : null));
+    for (let i = 1; i <= numberOfOptions; i++) { this.options.push(this.fb.control('', i !== 5 ? Validators.required : null)); }
   }
 
   get options() {
@@ -83,9 +83,9 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
     this.questionData.Question = {
       DefaultValue: this.f.question.value,
       TranslationKey: this.shortcutLifeTextToJsonService.convertTextToJson(this.f.question.value, false, true)
-    }
+    };
     for (let i = 0; i < 5; i++) {
-      let option: TranslationOptionModel = {
+      const option: TranslationOptionModel = {
         DefaultValue: this.options.controls[i].value,
         TranslationKey: this.shortcutLifeTextToJsonService.convertTextToJson(this.options.controls[i].value, false, true)
       };
@@ -106,8 +106,7 @@ export class ShortcutLifeUploadQuestionComponent implements OnInit, OnDestroy {
         });
     } else {
       this.shortcutLifeService.updateQuestionData(this.questionData).pipe(takeUntil(this._unsubscribeAll))
-        .subscribe((res) => {
-          res;
+        .subscribe(() => {
         });
     }
   }
