@@ -1,12 +1,60 @@
-<div id="modal-content-wrapper">
-    <header id="modal-header">
-        <h1 id="modal-title">Are you sure you want to logout?</h1>
+<div class="submit-answer-modal">
+    <header>
+        <h2 id="modal-title">Generate input and submit your output here</h2>
     </header>
-    <section id="modal-body">
-        <p>If you logout bad things might happen, but don't mind me, I'm just the description in a modal...</p>
+    <section *ngIf="!isInputGenerated && !isProblemGenerating" id="generate-input">
+        <p>After clicking generate input, u have to submit ur output within given time, after that u have to regenerate
+            input</p>
+        <!-- <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+            <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+        </div>
+        <div class="files-list" *ngFor="let file of files;let i= index">
+            <p> {{ file }} </p>
+            <button class="delete-file" (click)="deleteAttachment(i)">
+                <img src="../../assets/Recycle_Bin_Full.png">
+            </button>
+        </div> -->
+        <button (click)="generateInput()" mat-raised-button color="primary">Generate input</button>
     </section>
-    <footer id="modal-footer">
-        <button mat-raised-button id="modal-action-button" (click)="actionFunction()">Logout</button>
-        <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>
+    <mat-spinner *ngIf="isProblemGenerating"></mat-spinner>
+    <section *ngIf="isInputGenerated && !isProblemGenerating" class="upload-answer">
+        <button ngxClipboard [cbContent]="textInput" (click)="showCopyToast()" class="mb-8" mat-raised-button color="primary">Copy to clipboard</button>
+        <span class="ml-20" *ngIf="isCopiedCompleted">copied</span>
+        <textarea rows="10" cols="60" class="p-20"
+            placeholder="Generated Input"
+            [(ngModel)]="textInput">
+        </textarea>
+        <div fxLayout="row" class="mb-20">
+            <button (click)="toggleInputMethod(false, $event)" class="mr-20" mat-raised-button
+                color="primary">Upload solution
+            </button>
+            <p>Or paste ur answer below</p>
+        </div>
+        <div class="upload-info">
+
+            <div>
+                <input #fileUpload type="file" class="input_fileupload--hidden" 
+                 (change)="onFileSelected($event)" [(ngModel)]="inputFileName" accept="text/plain">
+
+                <div *ngFor="let f of files">
+                    <span>{{f.name}}</span>
+                    <button mat-icon-button color="primary"
+                        [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+                        (click)="removeFile($event,f)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <textarea rows="15" cols="60" class="p-20"
+            placeholder="Enter your solution here"
+            [(ngModel)]="textOutput">
+        </textarea>
+    </section>
+    <footer class="mt-12" fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-raised-button (click)="closeModal()">Cancel</button>
+        <button mat-raised-button color="primary" id="modal-action-button" (click)="actionFunction()">Submit
+            Answer</button>
     </footer>
 </div>

@@ -20,21 +20,15 @@ export class ArnOjDefaultComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.getAllProblems();
-    this.test();
+    this.getAllProblems();
+    // this.test();
   }
-  getAllProblems(){
-    this.arnOjService.getAllProblems().pipe(first())
-    .subscribe((data)=>{
-      this.problems = data;
-    })
-  }
-
-  test(){
+  getAllProblems() {
     debugger;
-    this.arnOjService.submitProblem().subscribe((data)=>{
-      data;
-    })
+    this.arnOjService.getAllProblems().pipe(first())
+      .subscribe((data) => {
+        this.problems = data;
+      });
   }
 
 }

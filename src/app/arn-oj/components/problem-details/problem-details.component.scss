@@ -1,4 +1,15 @@
 .problem-details {
+    .problem-description {
+        border: 1px solid !important;
+        border-left: 0px !important;
+        border-top: 0px !important;
+        border-bottom: 0px !important;
+        border-color: rgba(0,0,0,0.3) !important;
+    }
+    .problem-history {
+        position: sticky !important;
+        top: 0;
+    }
     .problem-heading{
         text-align: center !important;
         p{

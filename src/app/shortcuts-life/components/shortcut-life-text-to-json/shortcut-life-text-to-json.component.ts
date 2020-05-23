@@ -134,7 +134,6 @@ export class ShortcutLifeTextToJsonComponent implements OnInit {
   }
 
   onInput(event) {
-
   }
 
   onFileSelected(event) {

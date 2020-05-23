@@ -11,23 +11,23 @@ export class ProblemListComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() problemList: IProblem;
 
   constructor(
-    private router:Router,
+    private router: Router,
     private activeRoute: ActivatedRoute
   ) { }
-  
+
   ngOnInit() {
   }
-  
-  ngAfterViewInit(){
+
+  ngAfterViewInit() {
   }
-  
+
   ngOnChanges(): void {
   }
-  goToProblemDetails(problemId: string){
+  goToProblemDetails(problemId: string) {
     this.router.navigate([`${problemId}`],
-    {
-      relativeTo: this.activeRoute,
-      queryParamsHandling: "merge"
-    });
+      {
+        relativeTo: this.activeRoute,
+        queryParamsHandling: 'merge'
+      });
   }
 }
