@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild, ElementRef, Input, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ArnOjService } from '../../service/arn-oj.service';
 import { take } from 'rxjs/operators';
+import { IProblemSubmitModal } from '../../interfaces/problem-submit-modal.interface';
 
 @Component({
   selector: 'app-submit-problem-modal',
@@ -18,7 +19,10 @@ export class SubmitProblemModalComponent implements OnInit {
   isInputText = false;
   inputFileName: string;
   isCopiedCompleted = false;
-  textOutput = '';
+  formData: IProblemSubmitModal = {
+    userSolution: '',
+    userCode: ''
+  }
   textInput = '';
   isProblemGenerating = false;
   // files: any = [];
@@ -35,6 +39,7 @@ export class SubmitProblemModalComponent implements OnInit {
   // }
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<SubmitProblemModalComponent>,
     private sanitizer: DomSanitizer,
     private arnOjService: ArnOjService
@@ -95,15 +100,15 @@ export class SubmitProblemModalComponent implements OnInit {
     const textFile = this.files[0];
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
-      const textData = JSON.parse(JSON.stringify(fileReader.result));
-      this.textOutput = textData;
+      const textData: string = JSON.parse(JSON.stringify(fileReader.result));
+      this.formData.userSolution = textData.replace(/\r/g,'');
     };
     fileReader.readAsText(textFile);
   }
   // When the user clicks the action button a.k.a. the logout button in the\
   // modal, show an alert and followed by the closing of the modal
-  actionFunction() {
-
+  submitSolution() {
+    this.dialogRef.close(this.formData);
   }
   closeModal() {
     this.dialogRef.close();
@@ -111,7 +116,7 @@ export class SubmitProblemModalComponent implements OnInit {
   generateInput() {
     this.isProblemGenerating = true;
     setTimeout(() => {
-      this.arnOjService.generateInput().pipe(take(1)).subscribe((res) => {
+      this.arnOjService.generateInput(this.data.problemId).pipe(take(1)).subscribe((res) => {
         this.isProblemGenerating = false;
         this.isInputGenerated = true;
         this.textInput = res && res.input && res.input.join('\n');
@@ -119,8 +124,8 @@ export class SubmitProblemModalComponent implements OnInit {
     }, 700);
   }
   showCopyToast() {
-      this.isCopiedCompleted = true;
-      setTimeout(() => {
+    this.isCopiedCompleted = true;
+    setTimeout(() => {
       this.isCopiedCompleted = false;
     }, 400);
   }

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { IProblem, Problem } from '../../models/problem.model';
 import { ActivatedRoute } from '@angular/router';
 import { ArnOjService } from '../../service/arn-oj.service';
-import { first } from 'rxjs/operators';
+import { first, take } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SubmitProblemModalComponent } from '../submit-problem-modal/submit-problem-modal.component';
+import { ISubmitAnswer } from '../../interfaces/submit-answer.interface';
+import { IProblemSubmitModal } from '../../interfaces/problem-submit-modal.interface';
 
 @Component({
   selector: 'app-problem-details',
@@ -14,7 +16,9 @@ import { SubmitProblemModalComponent } from '../submit-problem-modal/submit-prob
 export class ProblemDetailsComponent implements OnInit {
   public problem: IProblem = new Problem();
   public isProblemLoaded = false;
-  public problemHistory = ['Wrong Answer On 21', 'Accepted'];
+  public problemHistory = [];
+  public problemId: string;
+  private localStorageHistoryData: any;
   constructor(
     private activeRoute: ActivatedRoute,
     private arnOjService: ArnOjService,
@@ -22,11 +26,14 @@ export class ProblemDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.problemId = this.activeRoute.snapshot.params.id;
     this.getProblem();
+    this.localStorageHistoryData = JSON.parse(localStorage.getItem('problemHistory'));
+    this.localStorageHistoryData =  this.localStorageHistoryData ? this.localStorageHistoryData : {};
+    this.problemHistory = this.localStorageHistoryData[this.problemId] ? this.localStorageHistoryData[this.problemId] : [];
   }
   getProblem() {
-    const problemId = this.activeRoute.snapshot.params.id;
-    this.arnOjService.getProblemById(problemId).pipe(first())
+    this.arnOjService.getProblemById(this.problemId).pipe(first())
       .subscribe((data) => {
         this.problem = data;
         this.isProblemLoaded = true;
@@ -40,7 +47,24 @@ export class ProblemDetailsComponent implements OnInit {
     dialogConfig.minHeight = '150px';
     dialogConfig.maxHeight = '350px';
     dialogConfig.width = '600px';
+    dialogConfig.data = { problemId: this.problemId };
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(SubmitProblemModalComponent, dialogConfig);
+    modalDialog.afterClosed().subscribe((modalResponse: IProblemSubmitModal) => {
+      if (modalResponse) {
+        const submitConfig: ISubmitAnswer = {
+          id: this.problemId,
+          solution: modalResponse.userSolution.split('\n')
+        }
+        this.arnOjService.submitProblem(submitConfig).pipe(take(1)).subscribe((res) => {
+          this.problemHistory.push({
+            status: res.status === 'Accepted' ? res.status : res.status + 'on test case ' + res.failedIndex,
+            corespondingCode: modalResponse.userCode
+          });
+          this.localStorageHistoryData[this.problemId] = this.problemHistory;
+          localStorage.setItem('problemHistory',JSON.stringify(this.localStorageHistoryData));
+        });
+      }
+    })
   }
 }

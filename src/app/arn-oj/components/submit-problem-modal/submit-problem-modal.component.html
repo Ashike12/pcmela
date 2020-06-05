@@ -26,9 +26,8 @@
         </textarea>
         <div fxLayout="row" class="mb-20">
             <button (click)="toggleInputMethod(false, $event)" class="mr-20" mat-raised-button
-                color="primary">Upload solution
+                color="primary">Upload solution in a text file
             </button>
-            <p>Or paste ur answer below</p>
         </div>
         <div class="upload-info">
 
@@ -49,12 +48,12 @@
 
         <textarea rows="15" cols="60" class="p-20"
             placeholder="Enter your solution here"
-            [(ngModel)]="textOutput">
+            [(ngModel)]="formData.userCode">
         </textarea>
     </section>
     <footer class="mt-12" fxLayout="row" fxLayoutAlign="space-between center">
         <button mat-raised-button (click)="closeModal()">Cancel</button>
-        <button mat-raised-button color="primary" id="modal-action-button" (click)="actionFunction()">Submit
+        <button mat-raised-button color="primary" id="modal-action-button" (click)="submitSolution()">Submit
             Answer</button>
     </footer>
 </div>
