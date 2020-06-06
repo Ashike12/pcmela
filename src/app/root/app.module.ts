@@ -18,6 +18,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
 import {BreadcrumbModule} from 'primeng/primeng';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { CoronavirusStatsModule } from '../coronavirus-stats/coronavirus-stats.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppRoutingModule,
     ShortcutsLifeModule,
     ApiIntegrationsModule,
+    CoronavirusStatsModule,
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,

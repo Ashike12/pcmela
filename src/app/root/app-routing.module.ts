@@ -46,9 +46,18 @@ const routes: Routes = [
     path: 'arn-oj',
     loadChildren: () => import('../arn-oj/arn-oj.module').then(m => m.ArnOjModule),
     data: {
-      breadcrumb: 'ARNOJ',
+      breadcrumb: 'ArnOJ',
       translate: false,
       translate_key: 'ARNOJ'
+    }
+  },
+  {
+    path: 'coronavirus-stats',
+    loadChildren: () => import('../coronavirus-stats/coronavirus-stats.module').then(m => m.CoronavirusStatsModule),
+    data: {
+      breadcrumb: 'Corona-statistics',
+      translate: false,
+      translate_key: 'CORONA_STATISTICS'
     }
   },
   {

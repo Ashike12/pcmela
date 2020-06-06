@@ -22,7 +22,7 @@ export class SubmitProblemModalComponent implements OnInit {
   formData: IProblemSubmitModal = {
     userSolution: '',
     userCode: ''
-  }
+  };
   textInput = '';
   isProblemGenerating = false;
   // files: any = [];
@@ -101,7 +101,7 @@ export class SubmitProblemModalComponent implements OnInit {
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       const textData: string = JSON.parse(JSON.stringify(fileReader.result));
-      this.formData.userSolution = textData.replace(/\r/g,'');
+      this.formData.userSolution = textData.replace(/\r/g, '');
     };
     fileReader.readAsText(textFile);
   }

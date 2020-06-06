@@ -55,16 +55,16 @@ export class ProblemDetailsComponent implements OnInit {
         const submitConfig: ISubmitAnswer = {
           id: this.problemId,
           solution: modalResponse.userSolution.split('\n')
-        }
+        };
         this.arnOjService.submitProblem(submitConfig).pipe(take(1)).subscribe((res) => {
           this.problemHistory.push({
             status: res.status === 'Accepted' ? res.status : res.status + 'on test case ' + res.failedIndex,
             corespondingCode: modalResponse.userCode
           });
           this.localStorageHistoryData[this.problemId] = this.problemHistory;
-          localStorage.setItem('problemHistory',JSON.stringify(this.localStorageHistoryData));
+          localStorage.setItem('problemHistory', JSON.stringify(this.localStorageHistoryData));
         });
       }
-    })
+    });
   }
 }

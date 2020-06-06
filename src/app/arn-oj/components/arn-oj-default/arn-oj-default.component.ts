@@ -24,7 +24,6 @@ export class ArnOjDefaultComponent implements OnInit {
     // this.test();
   }
   getAllProblems() {
-    debugger;
     this.arnOjService.getAllProblems().pipe(first())
       .subscribe((data) => {
         this.problems = data;

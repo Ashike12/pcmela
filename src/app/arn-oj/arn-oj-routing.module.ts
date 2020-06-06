@@ -13,7 +13,7 @@ const routes: Routes = [
     }
   },
   {
-    path:':id',
+    path: ':id',
     component: ProblemDetailsComponent,
     data: {
       breadcrumb: 'Problem-details',
