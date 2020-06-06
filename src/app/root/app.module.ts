@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { CommonMaterialModule } from "../common-module/common-material.module";
+import { CommonMaterialModule } from '../common-module/common-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ShortcutsLifeModule } from '../shortcuts-life/shortcuts-life.module';
 import { AppRootDefaultComponent } from './root-default/root-default.component';
@@ -14,10 +14,11 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { SharedTranslateModule } from '../common-module/shared-translate.module';
 import {BreadcrumbModule} from 'primeng/primeng';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { CoronavirusStatsModule } from '../coronavirus-stats/coronavirus-stats.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppRoutingModule,
     ShortcutsLifeModule,
     ApiIntegrationsModule,
+    CoronavirusStatsModule,
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,0 +1,33 @@
+<div fxLayout="row" *ngIf="isProblemLoaded" class="problem-details">
+    <div fxFlex="80" class="m-0 p-0 problem-description">
+        <div class="problem-heading">
+            <h1 class="mb-10">{{problem.title}}</h1>
+            <p class="my-4 text-bold">Time limit: currently depends upto you</p>
+            <p class="my-4 text-bold">Memory limit: currently depends upto you</p>
+        </div>
+        <p>{{problem.description}}</p>
+        <h2>Input</h2>
+        <p>{{problem.sample_input}}</p>
+        <h2>Output</h2>
+        <p>{{problem.sample_output}}</p>
+        <h2>Example</h2>
+        <div class="input-output-example">
+            <h3 class="pl-10">Input</h3>
+            <div class="input-example pl-10">
+                <p *ngFor="let line of problem.example_input">{{line}}</p>
+            </div>
+            <h3 class="pl-10">Output</h3>
+            <div class="output-example pl-10">
+                <p *ngFor="let line of problem.example_output">{{line}}</p>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="20" class="ml-20">
+        <div class="problem-history">
+            <button class="my-20" mat-raised-button color="primary" (click)="openSubmitModal(problem.id)">Submit Solution</button>
+            <div *ngFor="let history of problemHistory">
+                <p class="m-0 mb-12">{{history.status}}</p>
+            </div>
+        </div>
+    </div>
+</div>

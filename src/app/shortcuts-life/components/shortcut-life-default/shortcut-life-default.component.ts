@@ -9,26 +9,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ShortcutLifeDefaultComponent implements OnInit {
 
   constructor(
-    private router:Router,
+    private router: Router,
     private activeRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
 
-  routeToTextToJson(){
+  routeToTextToJson() {
     this.router.navigate(['text-to-json'],
-    {
-      relativeTo: this.activeRoute,
-      queryParamsHandling: "merge"
-    })
+      {
+        relativeTo: this.activeRoute,
+        queryParamsHandling: 'merge'
+      });
   }
-  routeToUploadQwestion(){
+  routeToUploadQwestion() {
     this.router.navigate(['upload-questions'],
-    {
-      relativeTo: this.activeRoute,
-      queryParamsHandling: "merge"
-    })
+      {
+        relativeTo: this.activeRoute,
+        queryParamsHandling: 'merge'
+      });
   }
 
 }

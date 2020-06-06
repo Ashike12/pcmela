@@ -2,16 +2,17 @@ export class TranslationOptionModel {
     TranslationKey: string;
     DefaultValue: string;
 
-    constructor(data?){
+    constructor(data?) {
         this.TranslationKey = data && data.TranslationKey ? data.TranslationKey : null,
-        this.DefaultValue = data && data.DefaultValue ? data.DefaultValue : null
+        this.DefaultValue = data && data.DefaultValue ? data.DefaultValue : null;
     }
 }
 
 
-export class QuestionModel{
-    _id:string;
-    Question:TranslationOptionModel;
+export class QuestionModel {
+    // tslint:disable-next-line:variable-name
+    _id: string;
+    Question: TranslationOptionModel;
     Answer: string;
     Options: TranslationOptionModel[];
     Category: string[];
@@ -20,19 +21,19 @@ export class QuestionModel{
     QuestionSource: string;
     AdditionalSource: string[];
     Description: string;
-    Language: string
-    
-    constructor(data?){
+    Language: string;
+
+    constructor(data?) {
         this._id = data && data._id ? data._id : null,
-        this.Prioroty = data && data.Prioroty ? data.Prioroty : null,
-        this.Question = new TranslationOptionModel(data && data.Question),
-        this.Options = data && data.Options ? data.Options : [],
-        this.Answer = data && data.Answer ? data.Answer : null,
-        this.Category = data && data.Category ? data.Category : [],
-        this.Classes = data && data.Classes ? data.Classes : [],
-        this.QuestionSource = data && data.QuestionSource ? data.QuestionSource: null,
-        this.AdditionalSource = data && data.AdditionalSource ? data.AdditionalSource: [],
-        this.Description = data && data.Description ? data.Description: null,
-        this.Language = data && data.Language ? data.Language : null
+            this.Prioroty = data && data.Prioroty ? data.Prioroty : null,
+            this.Question = new TranslationOptionModel(data && data.Question),
+            this.Options = data && data.Options ? data.Options : [],
+            this.Answer = data && data.Answer ? data.Answer : null,
+            this.Category = data && data.Category ? data.Category : [],
+            this.Classes = data && data.Classes ? data.Classes : [],
+            this.QuestionSource = data && data.QuestionSource ? data.QuestionSource : null,
+            this.AdditionalSource = data && data.AdditionalSource ? data.AdditionalSource : [],
+            this.Description = data && data.Description ? data.Description : null,
+            this.Language = data && data.Language ? data.Language : null;
     }
 }

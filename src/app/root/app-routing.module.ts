@@ -22,8 +22,8 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    data:{
-      breadcrumb: "Home"
+    data: {
+      breadcrumb: 'Home'
     }
   },
   {
@@ -39,11 +39,29 @@ const routes: Routes = [
     path: 'api-integrations',
     loadChildren: () => import('../api-integrations/api-integrations.module').then(m => m.ApiIntegrationsModule),
     data: {
-      breadcrumb: "API-Integration"
+      breadcrumb: 'API-Integration'
     }
   },
   {
-    path: "**",
+    path: 'arn-oj',
+    loadChildren: () => import('../arn-oj/arn-oj.module').then(m => m.ArnOjModule),
+    data: {
+      breadcrumb: 'ArnOJ',
+      translate: false,
+      translate_key: 'ARNOJ'
+    }
+  },
+  {
+    path: 'coronavirus-stats',
+    loadChildren: () => import('../coronavirus-stats/coronavirus-stats.module').then(m => m.CoronavirusStatsModule),
+    data: {
+      breadcrumb: 'Corona-statistics',
+      translate: false,
+      translate_key: 'CORONA_STATISTICS'
+    }
+  },
+  {
+    path: '**',
     component: PageNotFoundComponent
   }
 ];
@@ -55,4 +73,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 
- }
+}

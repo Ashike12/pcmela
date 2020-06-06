@@ -14,10 +14,9 @@ const routes: Routes = [
       translate: false,
       translate_key: '',
     }
-    
   },
   {
-    path:'text-to-json',
+    path: 'text-to-json',
     component: ShortcutLifeTextToJsonComponent,
     data: {
       breadcrumb: 'text-to-json',
