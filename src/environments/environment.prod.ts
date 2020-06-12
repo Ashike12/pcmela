@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   apiUrls: {
-    arnOJ: 'http://localhost:3000',
+    arnOJ: 'https://arnojproblemsolver.herokuapp.com/',
     coronaVirusFreeApi1: 'https://thevirustracker.com/'
   }
 };

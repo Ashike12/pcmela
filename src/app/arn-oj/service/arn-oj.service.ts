@@ -23,19 +23,19 @@ export class ArnOjService {
   }
 
   getAllProblems(): Observable<any> {
-    const problemUrl = environment.apiUrls.arnOJ + '/problems';
+    const problemUrl = environment.apiUrls.arnOJ + 'problems';
     return this.http.get(problemUrl, { headers: httpHeader });
   }
   getProblemById(probId: string): Observable<any> {
-    const problemUrl = environment.apiUrls.arnOJ + '/problems/' + probId;
+    const problemUrl = environment.apiUrls.arnOJ + 'problems/' + probId;
     return this.http.get(problemUrl, { headers: httpHeader });
   }
   submitProblem(submitModel: ISubmitAnswer): Observable<any> {
-    const url = environment.apiUrls.arnOJ + '/problems/submitSolution';
+    const url = environment.apiUrls.arnOJ + 'problems/submitSolution';
     return this.http.post(url,submitModel, { headers: httpHeader });
   }
   generateInput(problemId: string): Observable<any> {
-    const url = environment.apiUrls.arnOJ + '/problems/generateInput';
+    const url = environment.apiUrls.arnOJ + 'problems/generateInput';
     return this.http.post(url, {id: problemId}, { headers: httpHeader });
   }
 }
