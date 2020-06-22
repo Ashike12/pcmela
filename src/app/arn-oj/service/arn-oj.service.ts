@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment'
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ISubmitAnswer } from '../interfaces/submit-answer.interface';
@@ -32,7 +32,7 @@ export class ArnOjService {
   }
   submitProblem(submitModel: ISubmitAnswer): Observable<any> {
     const url = environment.apiUrls.arnOJ + 'problems/submitSolution';
-    return this.http.post(url,submitModel, { headers: httpHeader });
+    return this.http.post(url, submitModel, { headers: httpHeader });
   }
   generateInput(problemId: string): Observable<any> {
     const url = environment.apiUrls.arnOJ + 'problems/generateInput';
